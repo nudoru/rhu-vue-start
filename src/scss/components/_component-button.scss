@@ -1,0 +1,118 @@
+.button {
+  @extend .control-label;
+  @extend .u-unselectable;
+  @extend .shadow-xs;
+  padding: $base-value-quarter $base-value;
+  border-radius: $radius-base;
+  background-color: $button-primary-color;
+  border: 2px solid $button-primary-color;
+  color: #fff;
+  transition: all 0.3s ease;
+  margin: 0;
+  &.pill {
+    border-radius: $radius-full;
+  }
+  &.block {
+    display: block;
+    width: 100%;
+  }
+  &.large {
+    padding: $base-value-half ($base-value + $base-value-half);
+    font-size: $font-size-normal;
+    text-transform: none;
+  }
+  i[class^='fa'].left {
+    margin-right: $base-value-half;
+  }
+  i[class^='fa'].right {
+    margin-left: $base-value-half;
+  }
+  &:hover {
+    background: $button-primary-color-over;
+    border: 2px solid $button-primary-color-over;
+    cursor: pointer;
+    color: #fff;
+    text-decoration: none;
+  }
+  &:active,
+  &:focus {
+    @extend .control-border-style-active;
+  }
+  &.disabled,
+  &:disabled {
+    @extend .control-border-style-disabled;
+    box-shadow: none;
+    background-color: $form-color-disabled-text;
+    border: 2px solid $form-color-disabled-text;
+    color: $grey6;
+    &:hover {
+      @extend .control-border-style-disabled;
+      background-color: $form-color-disabled-text;
+      border: 2px solid $form-color-disabled-text;
+      color: $grey6;
+      cursor: default;
+    }
+    &:focus {
+      @extend .control-border-style-disabled;
+    }
+  }
+}
+
+@mixin button-variant($faceColor, $textColor: false) {
+  $overColor: adj-darker($faceColor, 10, 5%, 5);
+  $faceOverColor: $overColor;
+  $outlineColor: $faceColor;
+  $outlineColorOver: $overColor;
+  $textOverColor: $textColor;
+
+  @if $textColor == false {
+    $textColor: choose-contrast-color($faceColor);
+    $textOverColor: choose-contrast-color($faceOverColor);
+  }
+
+  background-color: $faceColor;
+  border-color: $outlineColor;
+  color: $textColor;
+  &:hover {
+    background: $faceOverColor;
+    border-color: $outlineColorOver;
+    color: $textOverColor;
+  }
+
+  &.outline {
+    $outlineColor: $faceColor;
+    $outlineColorOver: $overColor;
+    $textColor: $faceColor;
+    $textOverColor: $overColor;
+    $faceColor: transparent;
+    $faceOverColor: rgba($faceOverColor, 0.1);
+    &.link {
+      border-color: transparent;
+      &:hover {
+        border-color: transparent;
+      }
+    }
+    background-color: $faceColor;
+    border-color: $outlineColor;
+    color: $textColor;
+    &:hover {
+      background: $faceOverColor;
+      border-color: $outlineColorOver;
+      color: $textOverColor;
+    }
+  }
+}
+
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+  @extend .button;
+  @include button-variant($button-primary-color, white);
+
+  @each $status, $color in $statusColor {
+    &.#{$status} {
+      @include button-variant($color, map-get($statusTextColor, $status));
+    }
+  }
+}

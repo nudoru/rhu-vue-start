@@ -1,0 +1,180 @@
+@mixin content-gradient($from, $to) {
+  background-image: linear-gradient(150deg, $from 0%, $to 100%);
+}
+
+@mixin letter-press-effect() {
+  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.25),
+    1px 1px 1px rgba(255, 255, 255, 0.4);
+}
+
+@mixin transition-all($duration: 0.25s) {
+  transition: all $duration ease-out;
+  //transition-timing-function: cubic-bezier(0,0,.58,1); // ease out
+  transition-timing-function: cubic-bezier(0.42, 0, 0.58, 1); // ease in/out
+}
+
+@mixin background-cover($url) {
+  background: url($url) no-repeat center center fixed;
+  background-size: cover;
+}
+
+@mixin line-clamp($lines: 5) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+// Box for a font-awesome style icon div > i
+@mixin icon-container($size, $iconsize) {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: $size;
+  height: $size;
+  font-size: $iconsize;
+}
+
+@mixin stacked-cards($borderradius: $card-border-radius, $color: #fff) {
+  transform-style: preserve-3d;
+  &::before {
+    @extend .shadow-sm;
+    background: $color;
+    content: '';
+    width: 90%;
+    height: 100px;
+    position: absolute;
+    bottom: -7px;
+    margin: auto;
+    border-radius: $borderradius;
+    transform: translateZ(-1px);
+  }
+  &::after {
+    @extend .shadow-sm;
+    background: $color;
+    content: '';
+    width: 80%;
+    height: 100px;
+    position: absolute;
+    bottom: -13px;
+    margin: auto;
+    border-radius: $borderradius;
+    transform: translateZ(-2px);
+  }
+}
+
+// COLLECTED ----------------------------------------------------------------------------
+
+// https://css-tricks.com/snippets/css/fluid-typography/
+@function strip-unit($value) {
+  @return $value / ($value * 0 + 1);
+}
+
+@mixin fluid-type($min-vw, $max-vw, $min-font-size, $max-font-size) {
+  $u1: unit($min-vw);
+  $u2: unit($max-vw);
+  $u3: unit($min-font-size);
+  $u4: unit($max-font-size);
+
+  @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+    & {
+      font-size: $min-font-size;
+      @media screen and (min-width: $min-vw) {
+        font-size: calc(
+          #{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} *
+            ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)})
+        );
+      }
+      @media screen and (min-width: $max-vw) {
+        font-size: $max-font-size;
+      }
+    }
+  }
+}
+
+//https://github.com/engageinteractive/core/blob/master/src/scss/utility/_mixins.scss
+
+@mixin pseudo($display: block, $pos: absolute, $content: '') {
+  content: $content;
+  display: $display;
+  position: $pos;
+}
+
+/*
+@include mq('tablet-wide') {
+        padding-top: 4rem;
+        font-size: 2.4rem;
+    }
+*/
+
+@mixin mq($width, $type: min) {
+  @if map_has_key($breakpoints, $width) {
+    $width: map_get($breakpoints, $width);
+    @if $type == max {
+      $width: $width - 1px;
+    }
+    @media only screen and (#{$type}-width: $width) {
+      @content;
+    }
+  }
+}
+
+// Trigger hardware accel to speed up animation
+@mixin hardware($backface: true, $perspective: 1000) {
+  @if $backface {
+    backface-visibility: hidden;
+  }
+  perspective: $perspective;
+}
+
+/*
+	Fluid Property
+	http://www.adrenalinmedia.com.au/the-agency/insights/this-changes-everything-css-fluid-properties.aspx
+	HTML:
+	<h1 class="element">
+		<span>Text to replace</span>
+	</h1>
+	example:
+	h1 {
+		@include fp(font-size, 50, 100); // 50px at 320, 100px at 1920;
+	}
+	output:
+	h1 {
+		font-size: calc(3.125vw + 40px); //This is the magic!
+	}
+	@media (max-width:320px){ //Clips the start to the min value
+		font-size:50px;
+	}
+	@media (min-width:1920px){ //Clips the end to the max value
+		font-size:100px;
+	}
+*/
+
+@mixin fp(
+  $property,
+  $min,
+  $max,
+  $start: 320,
+  $end: breakpoint('desktop'),
+  $clip: true,
+  $clipAtStart: true,
+  $clipAtEnd: true
+) {
+  $start: $start / ($start * 0 + 1);
+  $end: $end / ($end * 0 + 1);
+  $multiplier: ($max - $min) / ($end - $start) * 100;
+  $adder: ($min * $end - $max * $start) / ($end - $start);
+  $formula: calc(#{$multiplier + 0vw} + #{$adder + 0px});
+  @if $clip and $clipAtStart {
+    @media (max-width: #{$start + 0px}) {
+      #{$property}: $min + 0px;
+    }
+  }
+  @if $clip and $clipAtEnd {
+    @media (min-width: #{$end + 0px}) {
+      #{$property}: $max + 0px;
+    }
+  }
+  #{$property}: $formula;
+}

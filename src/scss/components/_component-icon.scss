@@ -1,0 +1,67 @@
+$iconSizes: (
+  'xs': 24px,
+  'sm': 35px,
+  'md': 50px,
+  'lg': 75px,
+  'xl': 100px,
+);
+
+$iconFontSizes: (
+  'xs': 0.7rem,
+  'sm': 1rem,
+  'md': 1.2rem,
+  'lg': 2rem,
+  'xl': 3rem,
+);
+
+@each $size, $value in $iconSizes {
+  @each $status, $color in $statusColor {
+    .icon-#{$status}-#{$size} {
+      @include icon-container($value, map-get($iconFontSizes, $size));
+      border-radius: 50%;
+      background: control-gradient-lighter($color);
+      color: map-get($statusTextColor, $status);
+    }
+  }
+}
+
+.icon-card-header-base {
+  @extend .shadow-sm;
+  background: linear-gradient(-20deg, $teal-tint3, #fff);
+  border-radius: 50%;
+  border: 2px solid white;
+  i {
+    color: #333;
+    background: linear-gradient(-20deg, $teal-shade3, $teal-shade2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+@each $size, $value in $iconSizes {
+  .icon-card-header-#{$size} {
+    @extend .icon-card-header-base;
+    @include icon-container($value, map-get($iconFontSizes, $size));
+  }
+}
+
+.icon-card-header-square-xl {
+  @extend .shadow-sm;
+  position: relative;
+  font-size: 2rem;
+  width: 75px;
+  height: 75px;
+  line-height: 75px;
+  background: linear-gradient(-20deg, $teal-tint3, #fff);
+  text-align: center;
+  border-radius: 0.25rem;
+  border: 2px solid #fff;
+  i {
+    position: relative;
+    top: 5px;
+    color: #333;
+    background: linear-gradient(-20deg, $teal-shade3, $teal-shade2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}

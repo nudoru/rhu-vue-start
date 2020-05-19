@@ -1,0 +1,13 @@
+.app-footer {
+  @extend .band;
+  grid-area: footer;
+  background-color: $grey8;
+  color: #fff;
+  .container-horizontal {
+    p {
+      @extend .small;
+      color: $grey3;
+      margin: 0;
+    }
+  }
+}

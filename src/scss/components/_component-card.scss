@@ -1,0 +1,171 @@
+.box {
+  @extend .shadow-xs;
+  border-radius: $radius-base;
+  position: relative;
+  overflow: hidden;
+}
+
+.box-group-vertical {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: $scale0;
+  border-radius: $radius-base;
+  overflow: hidden;
+  & > div {
+    margin: 0 !important;
+    border-radius: 0;
+    box-shadow: none;
+    border-bottom: 1px solid rgba(black, 0.25);
+  }
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.box-group-horizontal {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: $scale0;
+  border-radius: $radius-base;
+  overflow: hidden;
+  justify-content: space-between;
+  align-items: stretch;
+  flex-wrap: nowrap;
+  & > * {
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+}
+
+.card-interactive {
+  &:hover {
+    // TODO optimize shadow animation
+    @extend .control-border-style-active;
+    @include transition-all();
+    border: none;
+    z-index: 1;
+    // transform: translateY(-3px);
+  }
+  &:focus {
+    outline: 1px dashed $blue;
+  }
+  &.disabled {
+    &:hover {
+      @extend .control-border-style-disabled;
+    }
+  }
+}
+
+.card-group-horizontal {
+  @extend .card-grid-x3;
+  margin-bottom: $scale3;
+  & > * {
+    margin: 0 !important;
+    width: 100% !important;
+  }
+}
+
+.card-group-vertical {
+  @extend .card-grid-x1;
+  & > .card-fancy {
+    @extend .card-fancy-row;
+  }
+  margin-bottom: $scale3;
+}
+
+// Because of the stacked effect, the card can't have border radius / overflow hidden
+// so each area needs to
+.card {
+  @extend .shadow-sm;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  grid-template-areas:
+    'header'
+    'content'
+    'footer';
+  justify-items: center;
+  // width: $card-width;
+  // height: $card-height;
+  border-radius: 0 0 $radius-base $radius-base;
+  border-top: 2px solid $primary-color;
+  background-color: #fff;
+  overflow: hidden;
+
+  .header {
+    grid-area: header;
+    position: relative;
+    width: 100%;
+    padding: 1rem 2rem;
+    background-color: $primary-color-light;
+    overflow: hidden;
+    &.dark {
+      h1,
+      .icon {
+        color: $grey8;
+        text-shadow: $shadow-text-light;
+      }
+    }
+    img {
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    .icon {
+      position: relative;
+      z-index: 1;
+      font-size: 4rem;
+      color: #fff;
+      margin-bottom: 1rem;
+      text-shadow: $shadow-text-dark;
+      text-align: center;
+    }
+    h1 {
+      @extend .h4;
+      margin: 0;
+      position: relative;
+      color: #fff;
+      text-shadow: $shadow-text-dark;
+    }
+  }
+
+  .content {
+    grid-area: content;
+    position: relative;
+    width: 100%;
+    padding: 1rem 2rem;
+    background-color: white;
+    .title {
+      h1 {
+        @extend .control-title;
+        color: $primary-color-dark;
+      }
+    }
+    .description {
+      @include line-clamp(6);
+      margin: 1rem 0;
+      p {
+        color: $grey6;
+        // @extend .control-message;
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  .footer {
+    grid-area: footer;
+    align-self: center;
+    width: 100%;
+    padding: 1rem 2rem;
+    background-color: $neutral-color-light;
+  }
+}

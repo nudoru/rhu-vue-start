@@ -1,0 +1,288 @@
+/*
+RHU Brand Colors
+$red,
+$purple-shade3;
+$indigo
+$blue-tint1
+$teal-tint2
+$yelloworange;
+*/
+
+$red-tint3: rgb(253, 219, 219);
+$red-tint2: rgb(250, 182, 182);
+$red-tint1: rgb(245, 109, 109);
+$red: rgb(238, 0, 0);
+$red-shade1: rgb(190, 0, 0);
+$red-shade2: rgb(143, 0, 0);
+$red-shade3: rgb(95, 0, 0);
+
+$purple-tint3: rgb(232, 228, 246);
+$purple-tint2: rgb(186, 173, 227);
+$purple-tint1: rgb(140, 119, 209);
+$purple: rgb(94, 64, 190);
+$purple-shade1: rgb(75, 51, 152);
+$purple-shade2: rgb(56, 38, 114);
+$purple-shade3: rgb(38, 26, 76);
+
+$indigo-tint3: rgb(226, 234, 246);
+$indigo-tint2: rgb(167, 192, 228);
+$indigo-tint1: rgb(108, 151, 211);
+$indigo: rgb(49, 109, 193);
+$indigo-shade1: rgb(39, 87, 154);
+$indigo-shade2: rgb(29, 65, 116);
+$indigo-shade3: rgb(20, 44, 77);
+
+$blue-tint3: rgb(219, 240, 247);
+$blue-tint2: rgb(147, 211, 230);
+$blue-tint1: rgb(76, 182, 214);
+$blue: rgb(4, 153, 197);
+$blue-shade1: rgb(3, 122, 158);
+$blue-shade2: rgb(2, 92, 118);
+$blue-shade3: rgb(2, 61, 79);
+
+$teal-tint3: rgb(228, 243, 244);
+$teal-tint2: rgb(174, 220, 221);
+$teal-tint1: rgb(121, 196, 198);
+$teal: rgb(67, 173, 175);
+$teal-shade1: rgb(54, 138, 140);
+$teal-shade2: rgb(40, 104, 105);
+$teal-shade3: rgb(27, 69, 70);
+
+$green-tint3: rgb(237, 246, 240);
+$green-tint2: rgb(201, 229, 211);
+$green-tint1: rgb(166, 211, 182);
+$green: rgb(130, 194, 153);
+$green-shade1: rgb(104, 155, 122);
+$green-shade2: rgb(78, 116, 92);
+$green-shade3: rgb(52, 78, 61);
+
+$yellowgreen-tint2: rgb(242, 247, 230);
+$yellowgreen-tint1: rgb(217, 230, 180);
+$yellowgreen: rgb(192, 214, 130);
+$yellowgreen-shade1: rgb(154, 171, 104);
+$yellowgreen-shade2: rgb(115, 128, 78);
+
+$yellow-tint1: rgb(255, 247, 196);
+$yellow: rgb(255, 234, 108);
+$yellow-shade1: rgb(204, 187, 86);
+$yellow-shade2: rgb(153, 140, 65);
+
+$yelloworange-tint2: rgb(254, 231, 205);
+$yelloworange-tint1: rgb(252, 206, 154);
+$yelloworange: rgb(250, 170, 79);
+$yelloworange-shade1: rgb(200, 136, 63);
+$yelloworange-shade2: rgb(150, 102, 47);
+
+$orange-tint2: rgb(253, 219, 199);
+$orange-tint1: rgb(250, 184, 144);
+$orange: rgb(247, 130, 60);
+$orange-shade1: rgb(198, 94, 43);
+$orange-shade2: rgb(148, 70, 32);
+$orange-shade3: rgb(99, 47, 22);
+
+$grey0: rgb(250, 250, 250);
+$grey1: rgb(243, 243, 243);
+$grey2: rgb(222, 222, 222);
+$grey3: rgb(201, 201, 201);
+$grey4: rgb(170, 170, 170);
+$grey5: rgb(139, 139, 139);
+$grey6: rgb(108, 108, 108);
+$grey7: rgb(77, 77, 77);
+$grey8: rgb(46, 46, 46);
+
+$color-nocolor: rgba(0, 0, 0, 0);
+
+$body-background-color: #fff;
+
+$status-color-info: $blue;
+$status-color-success: $green-shade1;
+$status-color-warning: $yelloworange;
+$status-color-danger: $red-shade1;
+
+$primary-color: $blue;
+$primary-color-dark: $blue-shade2;
+$primary-color-light: $blue-tint3;
+$secondary-color: $purple;
+$secondary-color-dark: $purple-shade2;
+$secondary-color-light: $purple-tint3;
+$neutral-color: $grey3;
+$neutral-color-dark: $grey6;
+$neutral-color-light: $grey1;
+
+// Background colors
+$statusColor: (
+  'primary': $primary-color,
+  'secondary': $secondary-color,
+  'white': #fff,
+  'info': $blue,
+  'success': $green-shade1,
+  'warning': $yelloworange,
+  'danger': $red-shade1,
+);
+
+$statusColorPale: (
+  'primary': $primary-color-light,
+  'secondary': $secondary-color-light,
+  'white': $neutral-color-light,
+  'info': $blue-tint3,
+  'success': $green-tint3,
+  'warning': $yelloworange-tint2,
+  'danger': $red-tint3,
+);
+
+$statusColorBlack: (
+  'primary': $primary-color-dark,
+  'secondary': $secondary-color-dark,
+  'white': $neutral-color-dark,
+  'info': $blue-shade3,
+  'success': $green-shade3,
+  'warning': $orange-shade3,
+  'danger': $red-shade3,
+);
+
+// Font colors on top of status
+$statusTextColor: (
+  'primary': #fff,
+  'secondary': #fff,
+  'white': $grey8,
+  'info': #fff,
+  'success': #fff,
+  'warning': $orange-shade3,
+  'danger': #fff,
+);
+
+// https://www.modularscale.com/?1,1170,12&em&1.35
+$modularscale-base: 1em 1170em 12em;
+$modularscale-ratio: 1.35;
+
+$scale16: 4.877rem;
+$scale15: 4.484rem;
+$scale14: 3.907rem;
+$scale13: 3.613rem;
+$scale12: 3.322rem;
+$scale11: 2.894rem;
+$scale10: 2.676rem;
+$scale9: 2.46rem;
+$scale8: 2.144rem;
+$scale7: 1.982rem;
+$scale6: 1.823rem;
+$scale5: 1.588rem;
+$scale4: 1.468rem;
+$scale3: 1.35rem;
+$scale2: 1.176rem;
+$scale1: 1.088rem;
+$scale0: 1rem;
+$scale-1: 0.871rem;
+$scale-2: 0.806rem;
+$scale-3: 0.741rem;
+$scale-4: 0.645rem;
+$scale-5: 0.597rem;
+$scale-6: 0.549rem;
+
+// Used for helper padding and margins
+$base-value: $scale0;
+$base-value-half: $base-value/2;
+$base-value-quarter: $base-value/4;
+
+$radius-base: $base-value-quarter;
+$radius-full: 62.4375rem; // 999px
+
+$band-container-padding: $scale0;
+$container-width-max: 1140px;
+
+// Used by the mq mixin
+$breakpoints: (
+  'phone': 400px,
+  'phone-wide': 480px,
+  'phablet': 560px,
+  'tablet-small': 640px,
+  'tablet': 768px,
+  'tablet-wide': 1024px,
+  'desktop': 1248px,
+  'desktop-wide': 1440px,
+);
+
+// TYPOGRAPHY ------------------------------------------------------------------------------------------------
+
+$font-family-headings: 'Red Hat Display', sans-serif;
+$font-family-base: 'Red Hat Text', sans-serif;
+
+$link-color: $blue;
+$link-decoration: none;
+$link-hover-color: $blue-shade2;
+$link-hover-decoration: underline;
+
+$font-weight-light: 400;
+$font-weight-normal: 500;
+$font-weight-bold: 600;
+
+$font-size-normal: $scale0;
+$font-size-small: $scale-3;
+
+$control-border-light: 1px solid $neutral-color-light;
+$control-border-mid: 1px solid $neutral-color;
+$control-border-dark: 1px solid $neutral-color-dark;
+
+// FORMS ------------------------------------------------------------------------------------------------
+
+$form-color-inner-shadow: $grey2;
+$form-color-disabled-background: $grey1;
+$form-color-disabled-text: $grey3;
+$from-color-error-border: $red;
+$from-color-error-text: $red-shade2;
+
+// FORMS ------------------------------------------------------------------------------------------------
+
+$button-primary-color: $link-color;
+$button-primary-color-over: $link-hover-color;
+$button-secondary-color: $purple;
+
+$label-color-text: $teal-shade3;
+$label-color-background: $teal-tint3;
+$label-color-border: $teal-tint2;
+$label-color-icon: $teal-shade2;
+
+// STACKING ------------------------------------------------------------------------------------------------
+
+$zindex-header: 99;
+$zindex-modal: 9999;
+
+// CARDS ------------------------------------------------------------------------------------------------
+
+$card-border-radius: 1rem;
+$card-width: 300px;
+$card-width-max: 370px; // = (1170-36)/3 or (single column - 2x $scale0) / 3
+$card-height: 400px;
+$card-height-list: 200px;
+$card-radius: $radius-base;
+
+// TABLES ------------------------------------------------------------------------------------------------
+
+$table-cell-padding: $base-value;
+$table-color-row-zebra: rgba($neutral-color-dark, 0.07);
+$table-color-column-zebra: rgba(white, 0.3);
+
+// Class Props ------------------------------------------------------------------------------------------------
+
+// From Calendar
+$class-color-default: $grey6;
+$class-color-managerteam: $blue-shade1;
+$class-color-profdevlead: $red-shade2;
+$class-color-sales: $green-shade2;
+$class-color-technical: $teal-shade2;
+
+// Some svg color classes to these
+$class-color-notstarted: $grey2;
+$class-color-notstarted-light: white;
+$class-color-notstarted-dark: $grey6;
+$class-color-inprogress: $yelloworange-shade1;
+$class-color-inprogress-light: $yelloworange-tint2;
+$class-color-inprogress-dark: $yelloworange-shade2;
+$class-color-completed: $green-shade2;
+$class-color-completed-light: $green-tint2;
+$class-color-completed-dark: $green-shade3;
+
+// Parts ------------------------------------------------------------------------------------------------
+
+$shadow-text-dark: 1px 1px 0 rgba(0, 0, 0, 0.25);
+$shadow-text-light: 1px 1px 0 rgba(255, 255, 255, 0.5);

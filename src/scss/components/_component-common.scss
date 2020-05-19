@@ -1,0 +1,73 @@
+// form legend
+.control-heading {
+  @extend .h5;
+}
+
+// form label, button text
+.control-label {
+  @extend .small;
+  margin: 0;
+  padding: 0;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+// form inline m
+.control-subtext {
+  @extend .control-label;
+  text-transform: none;
+}
+
+// Card titles
+.control-title {
+  @extend .h4;
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 400;
+  letter-spacing: -0.04rem;
+}
+
+// Card body text, form message
+.control-message {
+  @extend .small;
+  margin: 0;
+  color: $grey6;
+}
+
+.control-note {
+  @extend .control-message;
+  display: inline-block;
+  background-color: $neutral-color-light;
+  color: $neutral-color-dark;
+  padding: $base-value-quarter $base-value;
+  border-radius: $radius-base;
+}
+
+.control-shadow-inner {
+  box-shadow: inset 0 1px 2px $form-color-inner-shadow;
+}
+
+.control-border {
+  border: $control-border-mid;
+  border-radius: $radius-base;
+}
+
+.control-border-style-active {
+  border: 1px solid $blue;
+  box-shadow: 0 0 0 5px rgba($blue, 0.25);
+}
+
+.control-border-style-disabled {
+  border: 1px solid $form-color-disabled-text;
+  box-shadow: inherit;
+}
+
+@function control-gradient-darker($color) {
+  //adj-darker($color, $pct: 10%, $sat: 10%, $hue: 10)
+  @return linear-gradient(-20deg, $color, adj-darker($color));
+}
+
+@function control-gradient-lighter($color) {
+  //adj-darker($color, $pct: 10%, $sat: 10%, $hue: 10)
+  @return linear-gradient(-20deg, $color, adj-lighter($color, 10%, 5%));
+}

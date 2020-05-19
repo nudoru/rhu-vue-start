@@ -1,0 +1,120 @@
+$switch-toggle-size: 1.75rem;
+
+.checkbox-switch {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  //height: $switch-toggle-size;
+  &:focus-within {
+    @extend .control-border-style-active;
+  }
+
+  input[type='checkbox'] {
+    opacity: 0;
+    width: 0;
+  }
+
+  .switch-toggle {
+    display: inline-block;
+    position: relative;
+  }
+
+  label {
+    display: inline-block;
+    position: relative;
+    top: 0;
+    left: 0;
+    width: $switch-toggle-size * 2;
+    height: $switch-toggle-size;
+    margin: 0;
+    clip: rect(0 0 0 0);
+    color: transparent;
+    user-select: none;
+    text-indent: -100%;
+    overflow: hidden;
+    .switch-toggle-on,
+    .switch-toggle-off {
+      height: $switch-toggle-size;
+      position: absolute;
+      height: 100%;
+      top: 3px;
+      display: block;
+      z-index: 1;
+      -webkit-transition: 0.25s ease;
+      transition: 0.25s ease;
+    }
+    .switch-toggle-on {
+      // hidden
+      left: $switch-toggle-size + 0.75rem - $switch-toggle-size;
+      color: white;
+      //opacity: 0;
+    }
+    .switch-toggle-off {
+      // visible
+      right: -1.1rem;
+      color: $grey6;
+      //opacity: 1;
+    }
+    &::before,
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      cursor: pointer;
+    }
+    &::before {
+      width: $switch-toggle-size * 2;
+      height: $switch-toggle-size;
+      background-color: $grey2;
+      border: 1px solid $grey4;
+      border-radius: 9999em;
+      -webkit-transition: background-color 0.25s ease;
+      transition: background-color 0.25s ease;
+    }
+    &::after {
+      top: 0;
+      left: 0;
+      width: $switch-toggle-size;
+      height: $switch-toggle-size;
+      border-radius: 50%;
+      background-color: #fff;
+      border: 1px solid $grey5;
+      box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25);
+      -webkit-transition: 0.25s ease;
+      transition: 0.25s ease;
+    }
+  }
+
+  input:checked + label::before {
+    background-color: $green;
+    border: 1px solid $green-shade2;
+  }
+  input:checked + label::after {
+    transform: translateX($switch-toggle-size);
+  }
+  input:checked + label {
+    .switch-toggle-on {
+      left: $switch-toggle-size + 0.75rem;
+      //opacity: 1;
+    }
+    .switch-toggle-off {
+      //opacity: 0;
+      right: -1.1rem - $switch-toggle-size;
+    }
+  }
+  //inputNg[type="checkbox"]:focus + label::before {
+  //    @extend .border-style-active;
+  //}
+
+  // switch label
+  p {
+    @extend .control-label;
+    position: relative;
+    top: -4px;
+    color: $grey8;
+    margin: 0;
+    margin-left: $base-value;
+    text-align: center;
+  }
+}

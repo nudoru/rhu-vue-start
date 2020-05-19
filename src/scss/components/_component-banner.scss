@@ -1,0 +1,36 @@
+.banner-message-container {
+  @extend .shadow-lg;
+  @extend .box-group-vertical;
+}
+
+// layout has 3 columns: .icon, .content, .cta
+.banner-message {
+  @extend .layout-3-part;
+  @extend .shadow-lg;
+  @extend .box;
+  border-radius: $card-border-radius;
+  border: 1px solid transparent;
+  margin-bottom: $scale0;
+  background-color: $neutral-color-dark;
+  color: #fff;
+
+  .icon {
+    i[class^='fa'] {
+      font-size: 2rem;
+    }
+  }
+
+  .icon {
+    color: $neutral-color-light;
+  }
+
+  @each $status, $color in $statusColor {
+    &.#{$status} {
+      background-color: $color;
+      color: map-get($statusTextColor, $status);
+      .icon {
+        color: map-get($statusColorPale, $status);
+      }
+    }
+  }
+}

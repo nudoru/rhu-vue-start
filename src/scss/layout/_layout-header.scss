@@ -1,0 +1,55 @@
+.app-header {
+  @extend .band;
+  @extend .shadow-m;
+  grid-area: header;
+  background-color: #000;
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: $zindex-header;
+  .container-horizontal {
+    h1 {
+      @extend .h5;
+      margin: 0;
+      i[class^='fa'] {
+        margin-right: $base-value;
+      }
+    }
+    p {
+      margin: 0;
+    }
+    .app-navigation-primary {
+      @extend .tabs;
+      margin: 0;
+      border-bottom: none;
+      ul {
+        text-align: right;
+        li {
+          a {
+            padding: $base-value $base-value;
+            color: $neutral-color;
+            border-bottom: 1px solid transparent;
+          }
+          a:hover {
+            background-color: rgba(255,255,255,.25);
+            text-decoration: none;
+          }
+          &.active {
+            a {
+              color: $primary-color-light;
+              border-color: $primary-color;
+              background-color: transparent;
+            }
+          }
+          &:not(:last-child):after {
+            @extend %element-tab;
+            padding-left: $base-value-quarter;
+            padding-right: $base-value-quarter;
+            color: $neutral-color-dark;
+            content: '|';
+          }
+        }
+      }
+    }
+  }
+}

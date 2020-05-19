@@ -1,0 +1,28 @@
+// layout has 3 columns: .icon, .content, .cta
+.announcement {
+  @extend .layout-3-part;
+  border-left: 2px solid $neutral-color-dark;
+  margin-bottom: $scale0;
+  background-color: $neutral-color-light;
+  border-radius: 0 $radius-base $radius-base 0;
+  .icon {
+    i[class^='fa'] {
+      font-size: 2rem;
+    }
+  }
+  .icon,
+  .content h1 {
+    color: $neutral-color-dark;
+  }
+
+  @each $status, $color in $statusColor {
+    &.#{$status} {
+      border-left: 2px solid $color;
+      background-color: map-get($statusColorPale, $status);
+      .icon,
+      .content h1 {
+        color: map-get($statusColorBlack, $status);
+      }
+    }
+  }
+}

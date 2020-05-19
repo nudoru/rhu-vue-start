@@ -1,0 +1,64 @@
+.dim-tag {
+  display: inline-block;
+  font-size: 0.8rem;
+  color: #333;
+  background-color: rgba(0, 0, 0, 0.05);
+  padding: 0.1rem 0.6rem;
+  border-radius: $radius-full;
+}
+
+.dim-tag-white {
+  @extend .dim-tag;
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.tag-warning {
+  @extend .dim-tag;
+  background-color: $orange-shade1;
+  color: #fff !important;
+  i.fa {
+    color: $yelloworange-tint1 !important;
+  }
+}
+
+.tag-bold {
+  display: inline-block;
+  font-size: 1rem;
+  color: #fff;
+  background-color: $blue-shade2;
+  padding: 0.2rem 0.8rem;
+  border-radius: $radius-full;
+  white-space: nowrap;
+}
+
+.big-tag-bold {
+  display: inline-block;
+  font-size: inherit;
+  color: #fff;
+  background-color: $blue-shade2;
+  padding: 0.2rem 0.8rem;
+  border-radius: $radius-full;
+  white-space: nowrap;
+  i.fa {
+    color: $blue-tint2;
+    margin-right: $base-value-half;
+  }
+  i.fa.tag-remove {
+    color: white;
+    margin-right: 0;
+    margin-left: $base-value-half;
+    padding: 3px;
+    border-radius: 3px;
+    transition: background-color 0.25s ease-out;
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.25);
+    }
+  }
+}
+
+.tag-bold-white {
+  @extend .tag-bold;
+  background-color: #fff;
+  color: $blue-shade2 !important;
+}

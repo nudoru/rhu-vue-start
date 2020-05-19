@@ -1,0 +1,140 @@
+.layout-2-column {
+  display: grid;
+  grid-template-columns: [col-left] 1fr [col-right] 1fr;
+  grid-template-rows: [row-top] auto;
+  grid-gap: $scale0;
+  justify-items: stretch;
+  .column,
+  .column-main {
+  }
+  .column-span-full,
+  .row-header {
+    grid-column-start: span 2;
+  }
+  .column-height-full,
+  .column-sidebar {
+    align-self: stretch;
+  }
+}
+
+// Profile
+.layout-2-column-sidebar {
+  @extend .layout-2-column;
+  grid-template-columns: [col-left] 300px [col-right] auto;
+
+  .column-main {
+    grid-column-start: col-right;
+    grid-row-start: row-top;
+  }
+  .column-sidebar {
+    grid-column-start: col-left;
+    grid-row-start: row-top;
+  }
+
+  @media (max-width: 1000px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: [row-top] 1fr [row-bottom] auto;
+
+    .column-main {
+      grid-column-start: 1;
+      grid-row-start: row-bottom;
+    }
+    .column-sidebar {
+      grid-column-start: 1;
+      grid-row-start: row-top;
+      align-self: flex-start;
+    }
+  }
+}
+
+.layout-2-column-leftpriority {
+  display: flex;
+  min-width: 100%;
+  justify-content: stretch;
+  align-items: center;
+  margin-bottom: $scale0;
+  .column-main {
+    justify-self: flex-start;
+    flex: 1;
+    margin-right: $scale0;
+  }
+  .column-sidebar {
+    justify-self: flex-end;
+    text-align: right;
+  }
+}
+
+.layout-3-part {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  align-content: stretch;
+
+  .icon,
+  .content,
+  .cta {
+    padding: $scale0;
+    align-self: center;
+  }
+  .icon {
+    img.svg {
+      width: 32px;
+      height: 32px;
+    }
+  }
+  .content {
+    flex: 1;
+    h1 {
+      @extend .h6;
+      margin: 0;
+      margin-bottom: $scale0;
+    }
+    p {
+      margin: 0;
+    }
+    a,
+    a:hover,
+    a:visited {
+      color: #fff;
+      text-decoration: underline;
+    }
+  }
+  .cta {
+    button {
+      margin-right: $scale0;
+    }
+    button:last-child {
+      margin-right: 0;
+    }
+  }
+
+  @media (max-width: 551px) {
+    flex-direction: column;
+    .icon {
+      padding-bottom: 0;
+    }
+    .cta {
+      padding-top: 0;
+    }
+  }
+}
+
+.card-grid-x1 {
+  display: grid;
+  grid-gap: $base-value-quarter;
+  grid-template-rows: 1fr;
+}
+
+.card-grid-x3 {
+  display: grid;
+  grid-gap: $scale10;
+  grid-template-columns: repeat(auto-fill, minmax($card-width, 1fr));
+}
+
+.card-grid-x4 {
+  display: grid;
+  grid-gap: $scale0;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+}

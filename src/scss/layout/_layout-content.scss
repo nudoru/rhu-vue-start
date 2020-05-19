@@ -1,0 +1,8 @@
+.app-content {
+  @extend .band;
+  grid-area: content;
+  .container {
+    padding-top: $scale11;
+    padding-bottom: $scale11;
+  }
+}

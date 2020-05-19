@@ -1,0 +1,96 @@
+.table
+  margin: 0
+  margin-bottom: $base-value
+  padding: 0
+  width: 100%
+  table-layout: fixed
+  border-spacing: 0
+  border-collapse: collapse
+
+  caption
+    @extend .small
+
+  .column-feature
+    border: 1px solid $primary-color
+    background: $blue-tint3 !important
+
+  th, td
+    display: table-cell
+    padding: $table-cell-padding
+    border: none
+    vertical-align: middle
+
+  th
+    text-transform: uppercase
+    letter-spacing: 0.05rem
+    font-size: 0.8rem
+    i[class^='fa'].left
+      margin-right: $table-cell-padding/2
+    i[class^='fa'].right
+      margin-left: $table-cell-padding/2
+
+  thead
+    th
+      @extend .control-label
+      padding: $table-cell-padding
+      color: $primary-color-dark
+      border-bottom: 1px solid $primary-color
+    // .th-sortable
+    //   cursor: pointer
+    // .th-selected
+    //   color: #fff
+    //   background-color: $primary-color
+    //   border-radius: $radius-base $radius-base 0 0
+    //   // additional emphasis
+    //   i.fa
+    //     color: #fff
+
+  tfoot
+    th
+      border-bottom: none
+      border-top: $control-border-dark
+      vertical-align: top
+      color: $neutral-color-dark
+
+  tbody
+    th
+      text-align: right
+      font-weight: $font-weight-bold
+      color: $primary-color
+    tr
+      border-bottom: $control-border-mid
+    tr:last-child
+      border-bottom: none
+
+  @each $status, $color in $statusColor
+    .#{$status}
+      background: $color
+      color: map-get($statusTextColor, $status)
+
+  &.border-none
+    tbody
+      tr
+        border-bottom: none
+
+  &.zebra-rows
+    tbody
+      th, td
+        //border-bottom: 1px solid #fff
+      tr:nth-child(odd)
+        background-color: $table-color-row-zebra
+
+  &.zebra-cols
+    tbody
+      tr
+        th:nth-child(odd), td:nth-child(odd)
+          background-color: $table-color-column-zebra
+
+  .start
+    text-align: left
+
+  .center
+    text-align: center
+
+  .end
+    text-align: right
+

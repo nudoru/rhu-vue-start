@@ -1,0 +1,54 @@
+.app {
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  grid-template-areas:
+    'header'
+    'hero'
+    'content'
+    'footer';
+  min-height: 100vh;
+}
+
+%app-container {
+  position: relative;
+  width: 100%;
+  max-width: $container-width-max;
+  margin: 0 auto;
+  height: 100%;
+}
+
+.band {
+  display: flex;
+  flex-direction: column;
+  .shaded {
+    background-color: $grey1;
+    height: 100%;
+  }
+  .container {
+    @extend %app-container;
+    padding: 0 $band-container-padding;
+  }
+  .container-horizontal {
+    @extend %app-container;
+    padding: $band-container-padding;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    .start {
+      flex: 1;
+      text-align: left;
+    }
+    .end {
+      flex: 1;
+      text-align: right;
+    }
+  }
+  .container-full {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

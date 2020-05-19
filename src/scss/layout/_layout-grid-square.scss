@@ -1,0 +1,31 @@
+// Trick from https://www.youtube.com/watch?v=8bhKjoowr4c
+.grid-square {
+  display: grid;
+  grid-gap: $base-value-quarter;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  .cell {
+    position: relative;
+    padding: $scale0;
+    background-color: #eee;
+    text-align: center;
+    overflow: hidden;
+    place-items: center;
+    &::before {
+      content: '';
+      padding-top: 100%;
+      display: block;
+    }
+    span {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      max-width: 100%;
+      transform: translate(-50%, -50%);
+    }
+  }
+  &.shaded {
+    .cell {
+      background-color: $grey3;
+    }
+  }
+}

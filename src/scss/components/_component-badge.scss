@@ -1,0 +1,88 @@
+@mixin label-variant($faceColor, $textColor: false) {
+  @if $textColor == false {
+    $textColor: choose-contrast-color($faceColor);
+  }
+  background: $faceColor;
+  color: $textColor;
+  i[class^='fa'] {
+    color: $textColor;
+  }
+}
+
+.badge {
+  @extend .small;
+  display: inline-block;
+  padding: $base-value-quarter $base-value;
+  border-radius: $radius-full;
+  background: $label-color-background;
+  color: $label-color-text;
+  white-space: nowrap;
+  margin: 0;
+  i[class^='fa'] {
+    color: $label-color-icon;
+  }
+  i[class^='fa'].left {
+    margin-right: $base-value-half;
+  }
+  i[class^='fa'].right {
+    margin-left: $base-value-half;
+  }
+  em {
+    font-style: normal;
+    font-weight: $font-weight-bold;
+  }
+
+  @each $status, $color in $statusColor {
+    &.#{$status} {
+      @include label-variant($color, map-get($statusTextColor, $status));
+      i[class^='fa'] {
+        color: map-get($statusTextColor, $status);
+      }
+    }
+  }
+}
+
+.badge-lockup {
+  display: inline-block;
+  position: relative;
+  .element {
+    display: inline-block;
+    position: relative;
+  }
+  .badge {
+    @extend .shadow-xs;
+    position: relative;
+    z-index: 1;
+    top: -$base-value-half;
+    left: -$base-value-half;
+  }
+}
+
+.badge-stats-horizontal {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+  align-items: stretch;
+  border-top: 1px solid $label-color-border;
+  background: $label-color-background;
+  .badge {
+    text-align: center;
+    font-size: 0.6rem;
+    flex: 1;
+    padding: 0.5rem 1rem;
+    border-radius: 0;
+    border-right: 1px solid $teal-tint2;
+    color: $label-color-icon;
+    &:last-of-type {
+      border-right: none;
+    }
+    i[class^='fa'] {
+      display: block;
+      padding-bottom: 0.5rem;
+      margin: 0;
+      color: $label-color-text;
+      font-size: 1rem;
+    }
+  }
+}
