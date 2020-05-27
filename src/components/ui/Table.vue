@@ -61,7 +61,7 @@ Example cell slot
   </template>
  */
 
-import { path } from "ramda";
+import { path, is } from "ramda";
 import { sortObjectArray } from "../../libs/sortObjectArray";
 
 export default {
@@ -132,11 +132,12 @@ export default {
       }
       return "";
     },
-    getCellValue(col, cell) {
+    getCellValue(col, rowData) {
+      // TODO check to make sure path is an array
       if (col.hasOwnProperty("path") && col.path !== null) {
-        return path(col.path, cell);
+        return path(col.path, rowData);
       }
-      return cell;
+      return rowData;
     },
     applySort(column, data) {
       let sortPath = column.hasOwnProperty("sortPath")

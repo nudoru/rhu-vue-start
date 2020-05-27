@@ -19,6 +19,56 @@
       large
       >Ima button</Button
     >
+    <hr>
+    <Table
+            alignTop
+            sizeAuto
+            zebraRows
+            hoverRows
+            :data="getSampleJson()"
+            :format="[
+                    {
+            heading: 'Avatar',
+            slot: 'avatar',
+            path: ['picture'],
+          },
+          {
+            heading: 'Name',
+            slot: 'name',
+            path: ['name'],
+            sortPath: ['name','last'],
+            sortable: true,
+            sorted: true,
+            sortDirection: 1,
+          },
+          {
+            heading: 'Email',
+            slot: 'email',
+            path: ['email'],
+          },
+          {
+            heading: 'About',
+            slot: 'about',
+            path: ['about'],
+          },
+        ]"
+    >
+      <template v-slot:avatar="{ value }">
+        <img :src="value">
+      </template>
+      <template v-slot:name="{ value }">
+        <p class="mb-0">{{value.first}} {{value.last}}</p>
+      </template>
+      <template v-slot:email="{ value }">
+        <p class="mb-0">{{ value }}</p>
+      </template>
+      <template v-slot:about="{ value }">
+        <p class="mb-0">{{ value }}</p>
+      </template>
+    </Table>
+
+
+
     <Modal
       :visible="showModal"
       :coverCallback="onCloseModal"
@@ -57,14 +107,18 @@
 </template>
 
 <script>
+  import sampleJson from '@/libs/sampleJson';
+
 import Icon from "@/components/ui/Icon";
 import Badge from "@/components/ui/Badge";
 import Modal from "@/components/ui/Modal";
 import Button from "@/components/ui/Button";
+import Table from '@/components/ui/Table';
+
 
 export default {
   name: "Home",
-  components: { Modal, Icon, Badge, Button },
+  components: { Modal, Icon, Badge, Button, Table },
   props: {
     p: {
       type: Boolean,
@@ -73,11 +127,14 @@ export default {
   },
   data() {
     return {
-      showModal: false,
+      showModal: false
     };
   },
   computed: {},
   methods: {
+    getSampleJson() {
+      return sampleJson.sample;
+    },
     onShowModal() {
       this.showModal = true;
     },

@@ -1,5 +1,4 @@
 <style lang="scss">
-    // Trick from https://www.youtube.com/watch?v=8bhKjoowr4c
     .square-grid {
         display: grid;
         grid-gap: .2rem;
