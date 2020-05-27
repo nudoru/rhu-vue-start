@@ -25,58 +25,27 @@
 .u-rounded
   border-radius: $radius-base
 
-.u-padding-none
-  padding: 0
+//https://hugogiraudel.com/2020/05/18/using-calc-to-figure-out-optimal-line-height/
+.u-calc-lineheight
+  line-height: calc(2px + 2ex + 2px)
 
-.u-padding
-  padding: $scale0
+.u-full-cover-flex
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  display: flex
+  justify-content: center
+  align-items: center
 
-.u-padding-right
-  padding-right: $scale0
+.u-centered
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
 
-.u-padding-right-double
-  padding-right: $scale0*2
 
-.u-padding-left
-  padding-left: $scale0
-
-.u-padding-left-double
-  padding-left: $scale0*2
-
-.u-margin-none
-  margin: 0
-
-.u-padding-top
-  padding-top: $scale0
-
-.u-margin-top
-  margin-top: $scale0
-
-.u-margin-top-double
-  margin-top: $scale0*2
-
-.u-margin-top-tripple
-  margin-top: $scale0*3
-
-.u-margin-bottom
-  margin-bottom: $scale0
-
-.u-margin-bottom-double
-  margin-bottom: $scale0*2
-
-.u-margin-bottom-triple
-  margin-bottom: $scale0*3
-
-.u-margin-right
-  margin-right: $scale0
-
-.u-margin-left
-  margin-left: $scale0
-
-.u-margin-center
-  margin: 0 auto
-
-%img-responsive
+.img-responsive
   display: block
   height: auto
   max-width: 100%
@@ -147,16 +116,13 @@
   color: inherit
   padding: $scale-1  / 2
 
-.negative
-  color: #fff !important
-
 .shadow-xs
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.075)
 
 .shadow-sm
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05), 2px 6px 8px -5px rgba(0, 0, 0, 0.15)
 
-.shadow-m
+.shadow-m, .shadow-md
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05), 4px 8px 15px -7px rgba(0, 0, 0, 0.1), 4px 8px 20px rgba(0, 0, 0, 0.1)
 
 .shadow-lg

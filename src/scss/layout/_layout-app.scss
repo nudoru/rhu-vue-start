@@ -2,10 +2,10 @@
   display: grid;
   grid-template-rows: auto auto 1fr auto;
   grid-template-areas:
-    'header'
-    'hero'
-    'content'
-    'footer';
+    "header"
+    "hero"
+    "content"
+    "footer";
   min-height: 100vh;
 }
 

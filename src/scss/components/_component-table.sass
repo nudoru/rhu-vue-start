@@ -7,6 +7,15 @@
   border-spacing: 0
   border-collapse: collapse
 
+
+  &.auto
+    table-layout: auto
+
+  &.top
+    tbody
+      td
+        vertical-align: top
+
   caption
     @extend .small
 
@@ -25,9 +34,9 @@
     letter-spacing: 0.05rem
     font-size: 0.8rem
     i[class^='fa'].left
-      margin-right: $table-cell-padding/2
+      margin-right: $base-value-quarter
     i[class^='fa'].right
-      margin-left: $table-cell-padding/2
+      margin-left: $base-value-quarter
 
   thead
     th
@@ -35,15 +44,21 @@
       padding: $table-cell-padding
       color: $primary-color-dark
       border-bottom: 1px solid $primary-color
-    // .th-sortable
-    //   cursor: pointer
-    // .th-selected
-    //   color: #fff
-    //   background-color: $primary-color
-    //   border-radius: $radius-base $radius-base 0 0
-    //   // additional emphasis
-    //   i.fa
-    //     color: #fff
+      &.sortable
+        @include transition-all()
+        @extend .u-unselectable
+        cursor: pointer
+        color: $primary-color
+        .sort-icon
+          margin-left: $base-value-half
+        &:hover
+          background-color: $primary-color-light
+      &.sorted
+        color: #fff
+        background-color: $primary-color
+        border-bottom: 1px solid $primary-color-dark
+        &:hover
+          background-color: $primary-color-dark
 
   tfoot
     th
@@ -84,6 +99,13 @@
       tr
         th:nth-child(odd), td:nth-child(odd)
           background-color: $table-color-column-zebra
+
+  &.hover-rows
+    tbody
+      tr
+        @include transition-all()
+      tr:hover
+        background-color: rgba($primary-color, .1)
 
   .start
     text-align: left

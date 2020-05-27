@@ -2,6 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
 import Typography from '../views/Typography';
+import VueComponents from '../views/VueComponents';
 import Components from '../views/Components';
 import Forms from '../views/Forms';
 
@@ -19,8 +20,13 @@ const routes = [
     component: Typography
   },
   {
+    path     : '/vuecomponents',
+    name     : 'Vue Comp',
+    component: VueComponents
+  },
+  {
     path     : '/components',
-    name     : 'Components',
+    name     : 'HTML Comp',
     component: Components
   },
   {

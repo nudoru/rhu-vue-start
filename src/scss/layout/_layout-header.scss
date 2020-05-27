@@ -7,49 +7,33 @@
   position: sticky;
   top: 0;
   z-index: $zindex-header;
+  min-height: 51px; // contain mobile menu button
   .container-horizontal {
+    .end {
+      flex: unset;
+    }
     h1 {
       @extend .h5;
+      display: inline;
       margin: 0;
-      i[class^='fa'] {
+      i[class^="fa"] {
         margin-right: $base-value;
+      }
+    }
+    h2 {
+      @extend .h5;
+      display: inline;
+      margin: 0 0 0 $base-value;
+      color: $primary-color;
+      &::before {
+        content: "\/";
+        margin-right: $base-value;
+        font-weight: $font-weight-light;
+        color: $neutral-color-dark;
       }
     }
     p {
       margin: 0;
-    }
-    .app-navigation-primary {
-      @extend .tabs;
-      margin: 0;
-      border-bottom: none;
-      ul {
-        text-align: right;
-        li {
-          a {
-            padding: $base-value $base-value;
-            color: $neutral-color;
-            border-bottom: 1px solid transparent;
-          }
-          a:hover {
-            background-color: rgba(255,255,255,.25);
-            text-decoration: none;
-          }
-          &.active {
-            a {
-              color: $primary-color-light;
-              border-color: $primary-color;
-              background-color: transparent;
-            }
-          }
-          &:not(:last-child):after {
-            @extend %element-tab;
-            padding-left: $base-value-quarter;
-            padding-right: $base-value-quarter;
-            color: $neutral-color-dark;
-            content: '|';
-          }
-        }
-      }
     }
   }
 }

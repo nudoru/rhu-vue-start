@@ -2,8 +2,7 @@
 
 <template>
   <main class="app">
-    <Header><i class="far fa-lightbulb"></i>RHU Vue App Starter</Header>
-<!--    <Hero/>-->
+    <Header><h1><i class="far fa-lightbulb"></i>RHU</h1><h2>Starter</h2></Header>
     <Content>
       <router-view />
     </Content>
@@ -12,16 +11,14 @@
 </template>
 
 <script>
-import Header from './components/Header.vue';
-import Hero from "./components/Hero";
-import Content from "./components/Content";
-import Footer from "./components/Footer";
+import Header from './components/layout/Header.vue';
+import Content from "./components/layout/Content";
+import Footer from "./components/layout/Footer";
 
 export default {
   name: 'App',
   components: {
     Content,
-    Hero,
     Header,
     Footer
   },

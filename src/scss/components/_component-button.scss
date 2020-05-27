@@ -21,10 +21,10 @@
     font-size: $font-size-normal;
     text-transform: none;
   }
-  i[class^='fa'].left {
+  i[class^="fa"].left {
     margin-right: $base-value-half;
   }
-  i[class^='fa'].right {
+  i[class^="fa"].right {
     margin-left: $base-value-half;
   }
   &:hover {
@@ -87,6 +87,7 @@
     $faceColor: transparent;
     $faceOverColor: rgba($faceOverColor, 0.1);
     &.link {
+      box-shadow: none;
       border-color: transparent;
       &:hover {
         border-color: transparent;
@@ -104,9 +105,9 @@
 }
 
 button,
-[type='button'],
-[type='reset'],
-[type='submit'] {
+[type="button"],
+[type="reset"],
+[type="submit"] {
   @extend .button;
   @include button-variant($button-primary-color, white);
 
@@ -114,5 +115,18 @@ button,
     &.#{$status} {
       @include button-variant($color, map-get($statusTextColor, $status));
     }
+  }
+}
+
+.button-group-horizontal {
+  button:not(:last-of-type) {
+    margin-right: $base-value;
+  }
+}
+
+.button-group-expanded-horizontal {
+  button {
+    border-radius: 0;
+    padding: $base-value $base-value * 2;
   }
 }

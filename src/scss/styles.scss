@@ -1,32 +1,38 @@
-@import 'vars';
-@import 'functions';
-@import 'mixins';
-@import 'utils';
-@import 'typography';
-@import 'layout/layout-util';
-@import 'layout/layout-grid-square';
-@import 'components/component-common';
+@import "vendor/animate";
 
-@import 'forms';
+@import "vars";
+@import "functions";
+@import "mixins";
+@import "utils";
+@import "utilities";
+@import "typography";
+@import "transitions";
+@import "layout/layout-util";
+@import "layout/layout-grid-square";
+@import "components/component-common";
 
-@import 'components/component-announcement';
-@import 'components/component-banner';
-@import 'components/component-button';
-@import 'components/component-card';
-@import 'components/component-card-fancy';
-@import 'components/component-icon';
-@import 'components/component-badge';
-@import 'components/component-tabs';
-@import 'components/component-tag';
-@import 'components/component-table';
+@import "components/component-forms";
+
+@import "components/component-announcement";
+@import "components/component-banner";
+@import "components/component-button";
+@import "components/component-card";
+@import "components/component-card-fancy";
+@import "components/component-icon";
+@import "components/component-badge";
+@import "components/component-tabs";
+@import "components/component-tag";
+@import "components/component-table";
+@import "components/component-app-navigation";
+@import "components/component-modal";
 // needs to be updated @import 'components/component-checkbox';
 // needs to be updated @import 'components/component-switch';
 
-@import 'layout/layout-app';
-@import 'layout/layout-header';
-@import 'layout/layout-hero';
-@import 'layout/layout-content';
-@import 'layout/layout-footer';
+@import "layout/layout-app";
+@import "layout/layout-header";
+@import "layout/layout-hero";
+@import "layout/layout-content";
+@import "layout/layout-footer";
 
 html {
   -ms-text-size-adjust: 100%;

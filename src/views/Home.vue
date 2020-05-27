@@ -12,7 +12,7 @@
 </template>
 
 <script>
-  import Hero from "../components/Hero";
+  import Hero from "../components/layout/Hero";
   export default {
     name: 'Home',
     components: {Hero},

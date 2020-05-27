@@ -109,48 +109,6 @@ $neutral-color: $grey3;
 $neutral-color-dark: $grey6;
 $neutral-color-light: $grey1;
 
-// Background colors
-$statusColor: (
-  'primary': $primary-color,
-  'secondary': $secondary-color,
-  'white': #fff,
-  'info': $blue,
-  'success': $green-shade1,
-  'warning': $yelloworange,
-  'danger': $red-shade1,
-);
-
-$statusColorPale: (
-  'primary': $primary-color-light,
-  'secondary': $secondary-color-light,
-  'white': $neutral-color-light,
-  'info': $blue-tint3,
-  'success': $green-tint3,
-  'warning': $yelloworange-tint2,
-  'danger': $red-tint3,
-);
-
-$statusColorBlack: (
-  'primary': $primary-color-dark,
-  'secondary': $secondary-color-dark,
-  'white': $neutral-color-dark,
-  'info': $blue-shade3,
-  'success': $green-shade3,
-  'warning': $orange-shade3,
-  'danger': $red-shade3,
-);
-
-// Font colors on top of status
-$statusTextColor: (
-  'primary': #fff,
-  'secondary': #fff,
-  'white': $grey8,
-  'info': #fff,
-  'success': #fff,
-  'warning': $orange-shade3,
-  'danger': #fff,
-);
-
 // https://www.modularscale.com/?1,1170,12&em&1.35
 $modularscale-base: 1em 1170em 12em;
 $modularscale-ratio: 1.35;
@@ -190,22 +148,10 @@ $radius-full: 62.4375rem; // 999px
 $band-container-padding: $scale0;
 $container-width-max: 1140px;
 
-// Used by the mq mixin
-$breakpoints: (
-  'phone': 400px,
-  'phone-wide': 480px,
-  'phablet': 560px,
-  'tablet-small': 640px,
-  'tablet': 768px,
-  'tablet-wide': 1024px,
-  'desktop': 1248px,
-  'desktop-wide': 1440px,
-);
-
 // TYPOGRAPHY ------------------------------------------------------------------------------------------------
 
-$font-family-headings: 'Red Hat Display', sans-serif;
-$font-family-base: 'Red Hat Text', sans-serif;
+$font-family-headings: "Red Hat Display", sans-serif;
+$font-family-base: "Red Hat Text", sans-serif;
 
 $link-color: $blue;
 $link-decoration: none;
@@ -260,7 +206,7 @@ $card-radius: $radius-base;
 
 $table-cell-padding: $base-value;
 $table-color-row-zebra: rgba($neutral-color-dark, 0.07);
-$table-color-column-zebra: rgba(white, 0.3);
+$table-color-column-zebra: rgba($neutral-color-dark, 0.03);
 
 // Class Props ------------------------------------------------------------------------------------------------
 
@@ -282,7 +228,90 @@ $class-color-completed: $green-shade2;
 $class-color-completed-light: $green-tint2;
 $class-color-completed-dark: $green-shade3;
 
-// Parts ------------------------------------------------------------------------------------------------
+// MAPS ------------------------------------------------------------------------------------------------
+// Used in other styles and in _utilities.scss
 
-$shadow-text-dark: 1px 1px 0 rgba(0, 0, 0, 0.25);
-$shadow-text-light: 1px 1px 0 rgba(255, 255, 255, 0.5);
+// Used by the mq mixin
+$breakpoints: (
+  "phone": 400px,
+  "phone-wide": 480px,
+  "phablet": 560px,
+  "tablet-small": 640px,
+  "tablet": 768px,
+  "tablet-wide": 1024px,
+  "desktop": 1248px,
+  "desktop-wide": 1440px,
+);
+
+$scales: (
+  "ms16": 4.877rem,
+  "ms15": 4.484rem,
+  "ms14": 3.907rem,
+  "ms13": 3.613rem,
+  "ms12": 3.322rem,
+  "ms11": 2.894rem,
+  "ms10": 2.676rem,
+  "ms9": 2.46rem,
+  "ms8": 2.144rem,
+  "ms7": 1.982rem,
+  "ms6": 1.823rem,
+  "ms5": 1.588rem,
+  "ms4": 1.468rem,
+  "ms3": 1.35rem,
+  "ms2": 1.176rem,
+  "ms1": 1.088rem,
+  "ms0": 1rem,
+  "ms-1": 0.871rem,
+  "ms-2": 0.806rem,
+  "ms-3": 0.741rem,
+  "ms-4": 0.645rem,
+  "ms-5": 0.597rem,
+  "ms-6": 0.549rem,
+  "0": 0,
+);
+
+// Background colors
+$statusColor: (
+  "neutral": $neutral-color-light,
+  "primary": $primary-color,
+  "secondary": $secondary-color,
+  "white": #fff,
+  "info": $blue,
+  "success": $green-shade1,
+  "warning": $yelloworange,
+  "danger": $red-shade1,
+);
+
+$statusColorPale: (
+  "neutral": $neutral-color-light,
+  "primary": $primary-color-light,
+  "secondary": $secondary-color-light,
+  "white": $neutral-color-light,
+  "info": $blue-tint3,
+  "success": $green-tint3,
+  "warning": $yelloworange-tint2,
+  "danger": $red-tint3,
+);
+
+$statusColorBlack: (
+  "neutral": $neutral-color-dark,
+  "primary": $primary-color-dark,
+  "secondary": $secondary-color-dark,
+  "white": $neutral-color-dark,
+  "info": $blue-shade3,
+  "success": $green-shade3,
+  "warning": $orange-shade3,
+  "danger": $red-shade3,
+);
+
+// Font colors on top of status
+$statusTextColor: (
+  "neutral": $neutral-color-dark,
+  "primary": #fff,
+  "secondary": #fff,
+  "white": $grey8,
+  "info": #fff,
+  "success": #fff,
+  "warning": $orange-shade3,
+  "danger": #fff,
+);

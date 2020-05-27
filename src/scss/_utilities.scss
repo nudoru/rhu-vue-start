@@ -1,0 +1,219 @@
+// Borrowing from Tailwind css
+// Eventually replacing utils.sass
+
+$spacings: (
+  "m": "margin",
+  "p": "padding",
+);
+$positions: (
+  "t": "top",
+  "r": "right",
+  "b": "bottom",
+  "l": "left",
+);
+$dimensions: (
+  "w": "width",
+  "h": "height",
+  "min-w": "min-width",
+  "max-w": "max-width",
+  "min-h": "min-height",
+  "max-h": "max-height",
+);
+$dimValues: (
+  "auto": auto,
+  "screen": 100,
+  "full": 100%,
+);
+@each $scale, $value in $scales {
+  .text-#{$scale} {
+    font-size: $value;
+  }
+
+  // margin, padding
+  @each $sp, $spc in $spacings {
+    .#{$sp}-#{$scale} {
+      #{$spc}: $value;
+    }
+
+    @each $p, $pos in $positions {
+      .#{$sp}#{$p}-#{$scale} {
+        #{$spc}-#{$pos}: $value;
+      }
+    }
+  }
+
+  // width, height
+  @each $dm, $dims in $dimensions {
+    .#{$dm}-#{$scale} {
+      #{$dims}: $value;
+    }
+  }
+}
+
+@each $dm, $dims in $dimensions {
+  @each $dmv, $value in $dimValues {
+    $unit: "";
+
+    @if $dmv == "screen" {
+      $unit: vw;
+      @if ($dm == "h" or $dm == "min-h" or $dm == "max-h") {
+        $unit: vh;
+      }
+    }
+
+    .#{$dm}-#{$dmv} {
+      #{$dims}: #{$value}#{$unit};
+    }
+  }
+}
+
+$alignments: left, right, center;
+@each $values in $alignments {
+  .text-#{$values} {
+    text-align: $values;
+  }
+}
+
+$fontWeights: (
+  "light": $font-weight-light,
+  "normal": $font-weight-normal,
+  "bold": $font-weight-bold,
+);
+@each $weight, $value in $fontWeights {
+  .text-#{$weight} {
+    font-weight: $value;
+  }
+}
+
+$fontTransforms: (
+  "uppercase": uppercase,
+  "lowercase": lowercase,
+  "capitalize": capitalize,
+  "normal-case": none,
+);
+@each $transform, $value in $fontTransforms {
+  .#{$transform} {
+    text-transform: $value;
+  }
+}
+
+$letterSpacings: (
+  "tighter": -0.05rem,
+  "tight": -0.025rem,
+  "normal": 0,
+  "wide": 0.025rem,
+  "wider": 0.05rem,
+  "widest": 0.1rem,
+);
+@each $track, $value in $letterSpacings {
+  .tracking-#{$track} {
+    letter-spacing: $value;
+  }
+}
+
+$leadings: (
+  "none": 1,
+  "tight": 1.25,
+  "snug": 1.375,
+  "normal": 1.5,
+  "relaxed": 1.625,
+  "loose": 2,
+  "3": 0.75rem,
+  "4": 1rem,
+  "5": 1.25rem,
+  "6": 1.5rem,
+  "7": 1.75rem,
+  "8": 2rem,
+  "9": 2.25rem,
+  "10": 2.5rem,
+);
+@each $leading, $value in $leadings {
+  .leading-#{$leading} {
+    line-height: $value;
+  }
+}
+
+@each $status, $color in $statusColor {
+  .text-#{$status} {
+    color: $color;
+  }
+
+  .bg-#{$status} {
+    background-color: $color;
+  }
+
+  .border-#{$status} {
+    border: 1ps solid $color;
+  }
+
+  .border-r-#{$status} {
+    border: 1px solid $color;
+    border-radius: $radius-base;
+  }
+}
+
+$overflowTypes: overflow, overflow-x, overflow-y;
+$overflowValues: auto, visible, hidden, scroll;
+@each $overflow in $overflowTypes {
+  @each $values in $overflowValues {
+    .#{$overflow}-#{$values} {
+      overflow: $values;
+    }
+  }
+}
+
+$shadow-text-dark: 1px 1px 0 rgba(0, 0, 0, 0.25);
+$shadow-text-light: 1px 1px 0 rgba(255, 255, 255, 0.5);
+
+/*
+.u-padding-none
+padding: 0
+
+.u-padding
+padding: $scale0
+
+.u-padding-right
+padding-right: $scale0
+
+.u-padding-right-double
+padding-right: $scale0*2
+
+.u-padding-left
+padding-left: $scale0
+
+.u-padding-left-double
+padding-left: $scale0*2
+
+.u-margin-none
+margin: 0
+
+.u-padding-top
+padding-top: $scale0
+
+.u-margin-top
+margin-top: $scale0
+
+.u-margin-top-double
+margin-top: $scale0*2
+
+.u-margin-top-tripple
+margin-top: $scale0*3
+
+.u-margin-bottom
+margin-bottom: $scale0
+
+.u-margin-bottom-double
+margin-bottom: $scale0*2
+
+.u-margin-bottom-triple
+margin-bottom: $scale0*3
+
+.u-margin-right
+margin-right: $scale0
+
+.u-margin-left
+margin-left: $scale0
+
+.u-margin-center
+margin: 0 auto
+          */
