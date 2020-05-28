@@ -96,6 +96,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    compressed: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -114,6 +118,7 @@ export default {
         this.zebraRows ? "zebra-rows" : "",
         this.zebraCols ? "zebra-cols" : "",
         this.hoverRows ? "hover-rows" : "",
+        this.compressed ? "compressed" : "",
       ].join(" ");
     },
     headerCls(col) {

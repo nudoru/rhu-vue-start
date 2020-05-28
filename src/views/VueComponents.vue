@@ -31,6 +31,7 @@
             sizeAuto
             zebraRows
             hoverRows
+            compressed
             :data="getSampleJson()"
             :format="[
                     {
