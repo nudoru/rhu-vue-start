@@ -51,13 +51,13 @@
     components: {},
     props     : {
       data   : {
-        type    : Object,
+        type    : [Object, Array],
         default : null,
         required: true
       },
       exclude: {
         type   : Array,
-        default: []
+        default: () => []
       }
     },
     data() {
