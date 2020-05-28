@@ -7,11 +7,17 @@
 
 <template>
   <div class="container">
-    <Icon status="primary" glyph="fa fa-cog" />
+    <Icon size="xs" status="primary" glyph="fa fa-cog" />
+    <Icon size="sm" status="secondary" glyph="fa fa-cog" />
+    <Icon size="md" status="success" glyph="fa fa-cog" />
+    <Icon size="lg" status="warning" glyph="fa fa-cog" />
+    <Icon size="xl" status="danger" glyph="fa fa-cog" />
     <Badge status="neutral" glyph="far fa-calendar-alt">I'm a badge!</Badge>
-    <!--    <button class="danger" @click="onShowModal">-->
-    <!--      <i class="fas fa-external-link-alt left"></i>Open Modal-->
-    <!--    </button>-->
+    <Avatar size="xs" status="primary" imgUrl="https://images.pexels.com/photos/61100/pexels-photo-61100.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=500&w=500"/>
+    <Avatar size="sm" status="primary" imgUrl="https://images.pexels.com/photos/61100/pexels-photo-61100.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=500&w=500"/>
+    <Avatar size="md" status="primary" imgUrl="https://images.pexels.com/photos/61100/pexels-photo-61100.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=500&w=500"/>
+    <Avatar size="lg" status="primary" imgUrl="https://images.pexels.com/photos/61100/pexels-photo-61100.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=500&w=500"/>
+    <Avatar size="xl" status="primary" imgUrl="https://images.pexels.com/photos/61100/pexels-photo-61100.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=500&w=500"/>
     <Button
       @click="onShowModal"
       status="success"
@@ -54,13 +60,13 @@
         ]"
     >
       <template v-slot:avatar="{ value }">
-        <img :src="value">
+        <Avatar size="lg" status="neutral" :imgUrl="value"/>
       </template>
       <template v-slot:name="{ value }">
         <p class="mb-0">{{value.first}} {{value.last}}</p>
       </template>
       <template v-slot:email="{ value }">
-        <p class="mb-0">{{ value }}</p>
+        <p class="mb-0 font-mono">{{ value }}</p>
       </template>
       <template v-slot:about="{ value }">
         <p class="mb-0">{{ value }}</p>
@@ -114,11 +120,12 @@ import Badge from "@/components/ui/Badge";
 import Modal from "@/components/ui/Modal";
 import Button from "@/components/ui/Button";
 import Table from '@/components/ui/Table';
+import Avatar from "@/components/ui/Avatar";
 
 
 export default {
   name: "Home",
-  components: { Modal, Icon, Badge, Button, Table },
+  components: { Modal, Icon, Badge, Button, Table, Avatar },
   props: {
     p: {
       type: Boolean,

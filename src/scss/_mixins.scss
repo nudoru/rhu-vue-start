@@ -26,6 +26,7 @@
 }
 
 // Box for a font-awesome style icon div > i
+// Also for avatars div > img
 @mixin icon-container($size, $iconsize) {
   position: relative;
   display: flex;

@@ -1,0 +1,17 @@
+@each $size, $value in $iconSizes {
+  @each $status, $color in $statusColor {
+    .avatar-#{$status}-#{$size} {
+      @include icon-container($value, map-get($iconFontSizes, $size));
+      display: inline-block;
+      border-radius: 50%;
+      border: 1px solid $color;
+      overflow: hidden;
+      background-color: #fff;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+}
