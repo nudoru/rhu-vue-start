@@ -1,0 +1,9 @@
+.accordion-row {
+  border: 1px solid black;
+  .header {
+    @extend .button;
+  }
+  .content {
+    border: 1px solid red;
+  }
+}

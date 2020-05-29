@@ -7,6 +7,9 @@
 
 <template>
     <div class="container">
+        <AccordionRow>
+            <h1>Hi!</h1>
+        </AccordionRow>
         <div>
             <Loading label="Reticulating all of the splines ..."/>
         </div>
@@ -16,6 +19,16 @@
         <DonutChart :percent="75" label="Completed" size="md" status="primary" :stroke="8" :showPercent="false"/>
         <DonutChart :percent="75" label="Completed" size="lg" status="warning" :stroke="2" :showPercent="true"/>
         <DonutChart :percent="75" label="Completed" size="xl" status="secondary" :stroke="5" :showPercent="true"/>
+        <hr>
+        <Ribbon/>
+        <Ribbon status="danger"/>
+        <Ribbon status="success"/>
+        <Ribbon status="neutral"/>
+        <Ribbon status="warning"/>
+        <Ribbon position="top" status="success"/>
+        <Ribbon position="top" status="danger"/>
+        <Ribbon position="top" status="neutral"/>
+        <Ribbon position="top" status="secondary"/>
         <hr>
         <Icon size="xs" status="primary" glyph="fa fa-cog"/>
         <Icon size="sm" status="secondary" glyph="fa fa-cog"/>
@@ -165,11 +178,15 @@
   import TableObjData from "@/components/ui/TableObjData";
   import Loading from "../components/ui/Loading";
   import DonutChart from "../components/ui/DonutChart";
+  import Ribbon from "../components/ui/Ribbon";
+  import AccordionRow from "../components/ui/AccordionRow";
 
 
   export default {
     name      : "Home",
     components: {
+      AccordionRow,
+      Ribbon,
       DonutChart,
       Loading,
       Modal, Icon, Badge, Button, Table, Avatar, TableObjData},
