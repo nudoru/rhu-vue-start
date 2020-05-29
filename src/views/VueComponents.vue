@@ -25,6 +25,16 @@
                 imgUrl="https://images.pexels.com/photos/61100/pexels-photo-61100.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=500&w=500"/>
         <Avatar size="xl" status="primary"
                 imgUrl="https://images.pexels.com/photos/61100/pexels-photo-61100.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=500&w=500"/>
+        <Avatar size="xs" status="primary"
+                initials="MP"/>
+        <Avatar size="sm" status="neutral"
+                initials="MP"/>
+        <Avatar size="md" status="success"
+                initials="MP"/>
+        <Avatar size="lg" status="warning"
+                initials="MP"/>
+        <Avatar size="xl" status="secondary"
+                initials="MP"/>
         <hr>
         <Button
                 @click="onShowModal"

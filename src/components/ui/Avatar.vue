@@ -1,7 +1,10 @@
 <style lang="scss" scoped></style>
 
 <template>
-    <div :class="cls"><img :src="imgUrl " :alt="altText"></div>
+    <div :class="cls">
+        <img v-if="imgUrl" :src="imgUrl " :alt="altText">
+        <span v-if="initials" class="initials">{{initials}}</span>
+    </div>
 </template>
 
 <script>
@@ -16,12 +19,15 @@
     props: {
       imgUrl: {
         type: String,
-        default: '',
-        required: true
+        default: null
       },
       altText: {
         type: String,
         default: 'User avatar image'
+      },
+      initials: {
+        type: String,
+        default: null
       },
       size  : {
         type     : String,

@@ -67,7 +67,7 @@
   @return linear-gradient(-20deg, $color, adj-darker($color));
 }
 
-@function control-gradient-lighter($color) {
+@function control-gradient-lighter($color, $pct:10%) {
   //adj-darker($color, $pct: 10%, $sat: 10%, $hue: 10)
-  @return linear-gradient(-20deg, $color, adj-lighter($color, 10%, 5%));
+  @return linear-gradient(-20deg, $color, adj-lighter($color, $pct, 5%));
 }

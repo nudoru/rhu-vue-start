@@ -89,7 +89,7 @@
             cls = 'null';
           } else if (/[0-9]/.test(match)) {
             cls = 'number'
-          }  else if (/(\[)?(\])?(\{)?(\})?/.test(match)) {
+          } else if (/(\[)?(\])?(\{)?(\})?/.test(match)) {
             cls = 'brace'
           }
           return '<span class="' + cls + '">' + match + '</span>';
