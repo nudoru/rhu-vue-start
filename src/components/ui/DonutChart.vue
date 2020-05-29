@@ -1,3 +1,5 @@
+// Based on this pen https://codepen.io/zeroskillz/pen/mPmENy?editors=0010
+
 <style lang="scss" scoped></style>
 
 <template>
@@ -9,15 +11,13 @@
             <circle :r="radius" :cx="halfsize" :cy="halfsize"
                     :transform="rotateval" :style="indicatorstyle"
                     class="indicator"/>
-            <text class="text" :x="halfsize" :y="halfsize"
+            <text class="text" :x="halfsize" :y="halfsize+7"
                   :style="{textAnchor:'middle'}" v-if="showPercent">
                 <tspan class="text-percent">{{percent}}</tspan>
                 <tspan class="text-percent-sign">%</tspan>
-                <tspan class="text-label" :x="halfsize"
-                       :y="halfsize+10">{{label}}
-                </tspan>
             </text>
         </svg>
+        <span class="label">{{label}}</span>
     </div>
 </template>
 

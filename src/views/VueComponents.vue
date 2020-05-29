@@ -10,11 +10,13 @@
         <div>
             <Loading label="Reticulating all of the splines ..."/>
         </div>
+        <hr>
         <DonutChart :percent="75" label="Completed" size="xs" status="success" :stroke="7" :showPercent="false"/>
         <DonutChart :percent="75" label="Completed" size="sm" status="danger" :stroke="4" :showPercent="false"/>
         <DonutChart :percent="75" label="Completed" size="md" status="primary" :stroke="8" :showPercent="false"/>
         <DonutChart :percent="75" label="Completed" size="lg" status="warning" :stroke="2" :showPercent="true"/>
         <DonutChart :percent="75" label="Completed" size="xl" status="secondary" :stroke="5" :showPercent="true"/>
+        <hr>
         <Icon size="xs" status="primary" glyph="fa fa-cog"/>
         <Icon size="sm" status="secondary" glyph="fa fa-cog"/>
         <Icon size="md" status="success" glyph="fa fa-cog"/>

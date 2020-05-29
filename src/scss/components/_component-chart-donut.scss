@@ -1,5 +1,15 @@
 .donutchart-container {
   display: inline-block;
+  .label {
+    display: block;
+    width: 100%;
+    margin-top: $base-value-quarter;
+    text-align: center;
+    @extend .control-label;
+    white-space: normal;
+    color: $neutral-color-dark;
+    text-shadow: $shadow-text-light;
+  }
 }
 
 .donutchart {
@@ -27,10 +37,6 @@
   }
   .text-percent-sign{
     @extend .control-label;
-  }
-  .text-label{
-    @extend .control-label;
-    font-size: $scale-6;
   }
 
   @each $status, $color in $statusColor {
