@@ -7,6 +7,9 @@
 
 <template>
     <div class="container">
+        <div>
+            <Loading label="Reticulating all of the splines ..."/>
+        </div>
         <Icon size="xs" status="primary" glyph="fa fa-cog"/>
         <Icon size="sm" status="secondary" glyph="fa fa-cog"/>
         <Icon size="md" status="success" glyph="fa fa-cog"/>
@@ -153,11 +156,14 @@
   import Table from '@/components/ui/Table';
   import Avatar from "@/components/ui/Avatar";
   import TableObjData from "@/components/ui/TableObjData";
+  import Loading from "../components/ui/Loading";
 
 
   export default {
     name      : "Home",
-    components: {Modal, Icon, Badge, Button, Table, Avatar, TableObjData},
+    components: {
+      Loading,
+      Modal, Icon, Badge, Button, Table, Avatar, TableObjData},
     props     : {
       p: {
         type   : Boolean,

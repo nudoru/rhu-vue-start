@@ -13,6 +13,7 @@
 
 @import "components/component-forms";
 
+@import "components/component-loading";
 @import "components/component-announcement";
 @import "components/component-banner";
 @import "components/component-button";
@@ -57,4 +58,5 @@ body {
   font-size: $scale0;
   font-family: $font-family-base;
   background-color: $body-background-color;
+  //overflow-x: hidden;
 }
