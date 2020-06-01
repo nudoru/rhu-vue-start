@@ -1,35 +1,48 @@
-//https://github.com/maoberlehner/transition-to-height-auto-with-vue/blob/master/src/components/TransitionExpand.vue
-//https://css-tricks.com/using-css-transitions-auto-dimensions/
-
 <script>
+  import {gsap} from 'gsap';
+
   export default {
-    name: `AnimateExpand`,
+    name      : "AnimateExpand",
     functional: true,
     render(createElement, context) {
+      console.log(context);
       const data = {
         props: {
-          name: `expand`,
+          name: "animateexpand",
         },
-        on: {
-          afterEnter(element) {
-            element.style.height = `auto`;
-          },
-          enter(element) {
-            let height = element.scrollHeight;
-            element.style.height = height + 'px';
-          },
-          leave(element) {
-            let height = element.scrollHeight;
-            requestAnimationFrame(function() {
-              element.style.height = height + 'px';
-              requestAnimationFrame(function() {
-                element.style.height = 0 + 'px';
+        on   : {
+          // beforeEnter(element) {},
+          enter(el, done) {
+            gsap.fromTo(el, {
+                height: 0
+              },
+              {
+                height    : el.scrollHeight,
+                duration  : .5,
+                ease      : "circ.out",
+                onComplete: done
               });
+          },
+          afterEnter(el) {
+            el.style.height = "auto";
+          },
+          // enterCancelled(el) {},
+          // beforeLeave(el) {},
+          leave(el, done) {
+            gsap.fromTo(el, {
+              height: el.scrollHeight
+            }, {
+              height    : 0,
+              duration  : .5,
+              ease      : "circ.in",
+              onComplete: done
             });
           },
+          // afterLeave(el) {},
+          // leaveCancelled(el) {},
         },
       };
-      return createElement(`transition`, data, context.children);
+      return createElement("transition", data, context.children);
     },
   };
 </script>
@@ -40,18 +53,5 @@
         transform: translateZ(0);
         backface-visibility: hidden;
         perspective: 1000px;
-    }
-</style>
-
-<style>
-    .expand-enter-active,
-    .expand-leave-active {
-        transition: height .3s ease-out;
-        overflow: hidden;
-    }
-
-    .expand-enter,
-    .expand-leave-to {
-        height: 0;
     }
 </style>
