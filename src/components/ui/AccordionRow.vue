@@ -1,10 +1,11 @@
 <style lang="scss" scoped></style>
 
-//https://markus.oberlehner.net/blog/transition-to-height-auto-with-vue/
-
 <template>
-    <div class="accordion-row">
-        <div class="header" @click="onHeaderClick">{{label}}</div>
+    <div :class="cls()">
+        <div class="header" @click="onHeaderClick">
+            <div class="glyph"><i class="fas fa-chevron-up"></i></div>
+            <div class="label">{{label}}</div>
+        </div>
         <AnimateExpand>
             <div v-if="isExpanded" class="content">
                 <slot></slot>
@@ -33,10 +34,18 @@
         isExpanded: this.expanded
       };
     },
+    watch: {
+      expanded: function (newVal, oldVal) {
+        this.isExpanded = newVal;
+      },
+    },
     computed: {},
     methods: {
       onHeaderClick() {
         this.isExpanded = !this.isExpanded;
+      },
+      cls() {
+        return ['accordion-row', this.isExpanded ? 'open' : 'closed'].join(' ');
       }
     }
   };

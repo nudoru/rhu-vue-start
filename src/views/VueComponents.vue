@@ -7,8 +7,13 @@
 
 <template>
     <div class="container">
+        <AccordionRow :expanded="false">
+            <h1 v-dummy="5,10"></h1>
+            <p v-dummy="100,500"></p>
+        </AccordionRow>
         <AccordionRow>
-            <h1>Hi!</h1>
+            <h1 v-dummy="5,10"></h1>
+            <p v-dummy="100,500"></p>
         </AccordionRow>
         <div>
             <Loading label="Reticulating all of the splines ..." :visible="showLoading"/>

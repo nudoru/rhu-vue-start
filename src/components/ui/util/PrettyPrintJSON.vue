@@ -30,7 +30,7 @@
 
 <template>
     <span>
-        <pre v-html="processJSON(json)"></pre>
+        <pre v-html="processJSON()"></pre>
     </span>
 </template>
 
@@ -38,7 +38,7 @@
   export default {
     name: 'PrettyPrintJSON',
     methods: {
-      processJSON(json) {
+      processJSON() {
         let data;
         try {
           data = JSON.parse(this.$slots.default[0].text);

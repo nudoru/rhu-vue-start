@@ -79,7 +79,7 @@
 <style>
     .expand-enter-active,
     .expand-leave-active {
-        transition: height .25s ease-out;
+        transition: height .3s ease-out;
         overflow: hidden;
     }
 

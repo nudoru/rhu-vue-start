@@ -1,9 +1,78 @@
 .accordion-row {
-  border: 1px solid black;
+  position: relative;
+  &:hover {
+    z-index: 1;
+  }
   .header {
-    @extend .button;
+    @include transition-all();
+    border: 1px solid transparent;
+    border-bottom: $control-border-mid;
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+    align-items: center;
+    background-color: #fff;
+    .glyph {
+      padding: $base-value;
+      padding-right: 0;
+      color: $primary-color;
+      i[class^="fa"] {
+        @include transition-all();
+      }
+    }
+    .label {
+      @extend .control-label;
+      flex: 1;
+      padding: $base-value;
+      color: $primary-color-dark;
+    }
+    &:hover {
+      @extend .control-border-style-active;
+      background-color: $primary-color-light;
+    }
+
   }
   .content {
-    border: 1px solid red;
+    position: relative;
+    padding: $base-value;
   }
+
+  &.closed {
+    .header {
+      border: 1px solid transparent;
+      border-bottom: $control-border-mid;
+      .glyph {
+        color: $primary-color;
+        i[class^="fa"] {
+          transform: rotate(0deg);
+        }
+      }
+    }
+    .content {
+      border: none;
+    }
+  }
+
+  &.open {
+    @extend .shadow-sm;
+    .header {
+      @extend .shadow-sm;
+      border: 1px solid  $primary-color-dark;
+      background-color: $primary-color;
+      .glyph {
+        color: $primary-color-light;
+        i[class^="fa"] {
+          transform: rotate(180deg);
+        }
+      }
+      .label {
+        color: #fff;
+      }
+    }
+    .content {
+      border: 1px solid $neutral-color;
+      border-top: none;
+    }
+  }
+
 }

@@ -22,18 +22,22 @@
 </template>
 
 <script>
-  import {validateStatus, validateSize, sizeStringToPixel} from '@/libs/uiComponentPropValidation.js';
+  import {
+    sizeStringToPixel,
+    validateSize,
+    validateStatus
+  } from '@/libs/uiComponentPropValidation.js';
 
   export default {
     name      : 'DonutChart',
     components: {},
     props     : {
       size       : {
-        type   : String,
-        default: 'xl',
+        type     : String,
+        default  : 'xl',
         validator: validateSize
       },
-      stroke: {
+      stroke     : {
         type   : Number,
         default: 10
       },
@@ -59,10 +63,9 @@
       return {};
     },
     computed  : {
-
-sizePx() {
-  return sizeStringToPixel(this.size);
-},
+      sizePx() {
+        return sizeStringToPixel(this.size);
+      },
       halfsize() {
         return this.sizePx * 0.5;
       },
