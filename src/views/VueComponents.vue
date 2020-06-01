@@ -8,12 +8,8 @@
 <template>
     <div class="container">
         <AccordionRow :expanded="false">
-            <h1 v-dummy="5,10"></h1>
-            <p v-dummy="100,500"></p>
-        </AccordionRow>
-        <AccordionRow>
-            <h1 v-dummy="5,10"></h1>
-            <p v-dummy="100,500"></p>
+            <h1>Vel vitae enim dolor sagittis lorem nunc libero curabitur a</h1>
+            <p>Amet elit dolor sit est amet lorem consectetur libero consectetur viverra nullam sagittis adipiscing nunc adipiscing sit auctor tincidunt libero vitae a odio ipsum nec dolor libero tincidunt nullam dolor curabitur id in id nec in id atlorem libero in elit amet amet ipsum consectetur adipiscing euismod a dolor vitae elit euismod sit laoreet nunc ipsum sit nunc vel dolor dolor vel viverra condimentum nunc auctor odio euismod enim nec laoreet dolor nullam euismod nullam viverra elit amet consectetur nec nec nunc auctor tincidunt vel adipiscing enim est laoreet vel laoreet enim dolor libero condimentum odio libero a libero odio curabitur sit laoreet condimentum est libero tincidunt libero atlorem sagittis vitae dolor curabitur a in in libero a id vel amet sagittis sit id consectetur dolor id atlorem vitae id elit atlorem laoreet viverra ipsum euismod id elit nec nec condimentum auctor vel id auctor dolor libero tincidunt adipiscing nullam viverra consectetur viverra nullam dolor dolor euismod vitae libero ipsum odio vel nunc enim id laoreet condimentum a consectetur id enim odio libero curabitur atlorem odio est nunc est nullam condimentum vitae adipiscing enim sagittis curabitur elit adipiscing euismod auctor elit atlorem id id sagittis ipsum atlorem curabitur nec libero viverra est vel sagittis laoreet condimentum curabitur enim libero tincidunt auctor amet euismod tincidunt odio in libero condimentum vitae sagittis nullam viverra atlorem ipsum dolor in est tincidunt enim sagittis dolor a amet id sit consectetur auctor ipsum nunc adipiscing dolor ipsum sit dolor sit curabitur vitae adipiscing elit est amet in id consectetur a id nec vitae vel dolor viverra libero nunc auctor euismod vel nullam curabitur euismod a dolor laoreet enim condimentum in laoreet condimentum nec odio nullam id at tincidunt auctor odio libero libero viverra est id id est id enim tincidunt libero sagittis atlorem in vitae sagittis curabitur a dolor amet ipsum sit adipiscing consectetur elit nunc</p>
         </AccordionRow>
         <div>
             <Loading label="Reticulating all of the splines ..." :visible="showLoading"/>
