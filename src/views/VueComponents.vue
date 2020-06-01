@@ -11,7 +11,12 @@
             <h1>Hi!</h1>
         </AccordionRow>
         <div>
-            <Loading label="Reticulating all of the splines ..."/>
+            <Loading label="Reticulating all of the splines ..." :visible="showLoading"/>
+            <Button
+                    @click="onToggleLoading"
+                    status="neutral">
+                Toggle Loading
+            </Button>
         </div>
         <hr>
         <DonutChart :percent="75" label="Completed" size="xs" status="success" :stroke="7" :showPercent="false"/>
@@ -198,13 +203,17 @@
     },
     data() {
       return {
-        showModal: false
+        showModal: false,
+        showLoading: true
       };
     },
     computed  : {},
     methods   : {
       getSampleJson() {
         return sampleJson.sample;
+      },
+      onToggleLoading() {
+        this.showLoading = !this.showLoading;
       },
       onShowModal() {
         this.showModal = true;
