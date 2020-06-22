@@ -9,6 +9,10 @@
   <div class="container">
     <div class="text-primary">
       <SVGIcon icon="aperture" size="xl" startColor="red" endColor="blue" />
+      <SVGIcon icon="camera" size="xs" class="ml-ms0" />
+      <SVGIcon icon="camera" size="sm" class="ml-ms0" />
+      <SVGIcon icon="camera" size="md" class="ml-ms0" />
+      <SVGIcon icon="camera" size="lg" class="ml-ms0" />
       <SVGIcon icon="camera" size="xl" class="ml-ms0" />
     </div>
     <hr />

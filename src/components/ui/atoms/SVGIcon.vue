@@ -24,6 +24,8 @@ import {
   validateStatus,
 } from '../../libs/uiComponentUtilities.js';
 
+import {createElementSVG, wrapChildren, removeAllElements} from '../../libs/dom';
+
 const cls = context => [
   'svgicon',
   context.data.class ? context.data.class : '',
@@ -48,43 +50,57 @@ const svgPath = './icons/';
 const mounted = (el, id, props) => {
   let svgEl = el.firstChild;
 
-  // wrap all elements in a group
-  let children = svgEl.querySelectorAll('*');
-  let groupWrap = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-  groupWrap.setAttribute('id', `group-${id}`);
-
-  children.forEach((c,i) => {
-      groupWrap.appendChild(c);
-    });
-  svgEl.insertBefore(groupWrap, svgEl.firstChild);
+  // svg-icon class set size at 1em. allows svg to scale based on font-size of container
+  svgEl.removeAttribute('height');
+  svgEl.removeAttribute('width');
+  svgEl.setAttribute('stroke-width', props.stroke);
 
   if(props.startColor && props.endColor) {
-    let defs = `<defs>
+
+    // Use a clipping mask to clip out svg shape - doesn't work
+    // let gradient = `<defs>
+    //           <linearGradient id="grad-${id}" x1="0" y1="0" x2="100%" y2="100%" gradientTransform="rotate(0)">
+    //               <stop offset="5%" stop-color=${props.startColor}  stop-opacity="1"/>
+    //               <stop offset="95%" stop-color=${props.endColor}  stop-opacity="1"/>
+    //           </linearGradient>
+    //           <clipPath id="clip-${id}">
+    //             ${svgEl.innerHTML}
+    //           </clipPath>
+    //       </defs>
+    //       <rect x="0" y="0" width="100%" height="100%" fill="url(#grad-${id})" clip-path="url(#clip-${id})"/>`;
+    // removeAllElements(svgEl);
+    // svgEl.insertAdjacentHTML('afterBegin', gradient);
+
+    // group and set a fill - doesn't work
+    // let gradient = `<defs>
+    //           <linearGradient id="grad-${id}" x1="0" y1="0" x2="100%" y2="100%" gradientTransform="rotate(0)">
+    //               <stop offset="5%" stop-color=${props.startColor}  stop-opacity="1"/>
+    //               <stop offset="95%" stop-color=${props.endColor}  stop-opacity="1"/>
+    //           </linearGradient>
+    //       </defs>
+    //       <g id="group-${id}" stroke="url(#grad-${id})">
+    //       ${svgEl.innerHTML}
+    //       </g>`;
+    // removeAllElements(svgEl);
+    // svgEl.insertAdjacentHTML('afterBegin', gradient);
+
+    let gradient = `<defs>
               <linearGradient id="grad-${id}" x1="0" y1="0" x2="100%" y2="100%" gradientTransform="rotate(0)">
                   <stop offset="5%" stop-color=${props.startColor}  stop-opacity="1"/>
                   <stop offset="95%" stop-color=${props.endColor}  stop-opacity="1"/>
               </linearGradient>
-              <mask id="mask-${id}">
-                <rect x="0" y="0" width="100%" height="100%" fill="url(#grad-${id})"/>
-              </mask>
-          </defs>`;
-    svgEl.insertAdjacentHTML('afterBegin', defs);
-    // if(svgEl.getAttribute('stroke') && svgEl.getAttribute('stroke') !== 'none') {
-    //   svgEl.setAttribute('stroke', `url(#${id})`);
-    // }
-    // if(svgEl.getAttribute('fill') && svgEl.getAttribute('fill') !== 'none') {
-    //   svgEl.setAttribute('fill', `url(#${id})`);
-    // }
-    /*
+          </defs>
+          ${svgEl.innerHTML}`;
+    removeAllElements(svgEl);
+    svgEl.insertAdjacentHTML('afterBegin', gradient);
 
-     */
-    // svgEl.setAttribute('mask', `url(#${"mask-"+id})`);
-    svgEl.querySelector(`#group-${id}`).setAttribute('stroke', `url(#${"grad-"+id})`);
+    if(svgEl.getAttribute('stroke') && svgEl.getAttribute('stroke') !== 'none') {
+      svgEl.setAttribute('stroke', `url(#grad-${id})`);
+    }
+    if(svgEl.getAttribute('fill') && svgEl.getAttribute('fill') !== 'none') {
+      svgEl.setAttribute('fill', `url(#grad-${id})`);
+    }
   }
-
-  // svg-icon class set size at 1em. allows svg to scale based on font-size of container
-  svgEl.removeAttribute('height');
-  svgEl.removeAttribute('width');
 };
 
 export default {
@@ -105,6 +121,10 @@ export default {
       type     : String,
       default  : "",
       validator: validateStatus,
+    },
+    stroke : {
+      type     : String,
+      default  : "5%",
     },
     startColor: {
       type     : String,
@@ -127,7 +147,7 @@ export default {
       svgFile = `<strong class='text-danger'>${props.src}</strong>`;
     }
 
-    const svgElement = <span class={cls(context)} style={spanStyle(props)} domPropsInnerHTML={svgFile} data-id={id}/>;
+    const svgElement = <span class={cls(context)} style={spanStyle(props)} aria-hidden="true" focusable="false" domPropsInnerHTML={svgFile} data-id={id}/>;
 
     return h('transition', {
       props: {
