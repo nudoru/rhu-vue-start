@@ -1,0 +1,40 @@
+// Spinner animation based on https://codepen.io/Paolo-Duzioni/pen/ZoRabJ
+
+.loading {
+  position: relative;
+  display: block;
+  background-color: $grey0;
+  padding: $base-value;
+  margin: 0 auto;
+  width: 200px;
+  text-align: center;
+  border-radius: $radius-base;
+  .spinner {
+    margin: 0 auto;
+    width: 5rem;
+    height: 5rem;
+    border: 10px solid rgba(white, 1);
+    border-top-color: $primary-color;
+    border-radius: 50%;
+    box-shadow: 0 -2px 5px rgba($primary-color, .25), 0 -10px 15px $primary-color-light, inset 0 10px 15px $primary-color-light;
+    animation: rotation 1s ease infinite;
+    @keyframes rotation{
+      from{
+        transform: rotate(0deg);
+      }
+      to{
+        transform: rotate(360deg);
+      }
+    }
+  }
+  .label{
+    display: block;
+    width: 100%;
+    margin-top: $base-value;
+    text-align: center;
+    @extend .control-label;
+    white-space: normal;
+    color: $neutral-color-dark;
+    text-shadow: $shadow-text-light;
+  }
+}

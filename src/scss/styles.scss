@@ -1,42 +1,51 @@
-@import "vendor/animate";
+//@import "vendor/animate";
 
-@import "vars";
-@import "functions";
-@import "mixins";
-@import "utils";
-@import "utilities";
-@import "typography";
-@import "transitions";
-@import "layout/layout-util";
-@import "layout/layout-grid-square";
-@import "components/component-common";
-
-@import "components/component-forms";
-@import "components/component-chart-donut";
-@import "components/component-loading";
-@import "components/component-ribbon";
-@import "components/component-announcement";
-@import "components/component-banner";
-@import "components/component-button";
-@import "components/component-card";
-@import "components/component-card-fancy";
-@import "components/component-icon";
-@import "components/component-avatar";
-@import "components/component-badge";
-@import "components/component-tabs";
-@import "components/component-tag";
-@import "components/component-table";
-@import "components/component-app-navigation";
-@import "components/component-modal";
-@import "components/component-accordion";
+@import 'vars';
+@import 'functions';
+@import 'mixins';
+@import 'utilities';
+@import 'typography';
+@import 'transitions';
+@import 'fluid-type';
+@import 'layout/util';
+@import 'layout/grid-square';
+@import 'ui/common';
+@import 'ui/box';
+@import 'ui/svg-icon';
+@import 'ui/syntax-highlight';
+@import 'ui/forms';
+@import 'ui/progress-bar';
+@import 'ui/progress-donut';
+@import 'ui/loading';
+@import 'ui/ribbon';
+@import 'ui/announcement';
+@import 'ui/banner';
+@import 'ui/button';
+@import 'ui/drop-down';
+@import 'ui/card';
+@import 'ui/card-fancy';
+@import 'ui/icon';
+@import 'ui/avatar';
+@import 'ui/badge';
+@import 'ui/tabs';
+@import 'ui/tag';
+@import 'ui/table';
+@import 'ui/app-navigation';
+@import 'ui/modal';
+@import 'ui/accordion';
+@import 'ui/toggle-chevron';
+@import 'ui/check-box-svg';
+@import 'ui/mobile-menu-icon';
+@import 'ui/calendar-date';
+@import 'ui/document-outline';
 // needs to be updated @import 'components/component-checkbox';
 // needs to be updated @import 'components/component-switch';
 
-@import "layout/layout-app";
-@import "layout/layout-header";
-@import "layout/layout-hero";
-@import "layout/layout-content";
-@import "layout/layout-footer";
+@import 'layout/app';
+@import 'layout/header';
+@import 'layout/hero';
+@import 'layout/content';
+@import 'layout/footer';
 
 html {
   -ms-text-size-adjust: 100%;
@@ -44,6 +53,7 @@ html {
   -webkit-text-size-adjust: none;
   min-height: 100vh;
   font-size: 100%;
+  scroll-behavior: smooth;
 }
 
 *,
@@ -60,5 +70,47 @@ body {
   font-size: $scale0;
   font-family: $font-family-base;
   background-color: $body-background-color;
-  //overflow-x: hidden;
+}
+
+// MISC ------------------------------------------------------------------------------------------------
+
+// Format inline text to look like code
+.code-inline {
+  position: relative;
+  top: -1px;
+  font-family: $font-family-mono;
+  font-size: $font-size-small;
+  background-color: $neutral-color-light;
+  box-shadow: 0 2px 0 $neutral-color;
+  padding: $base-value-quarter $base-value-half;
+  border-radius: $radius-base;
+}
+
+// added to headings via ./components/libs/headingAnchorLink
+.anchor-heading {
+  scroll-margin-top: 5rem; // adjust to keep under sticky header
+  &:hover {
+    .anchor-link {
+      //color: $neutral-color-dark;
+      color: $link-color;
+      text-decoration: none;
+    }
+  }
+  .anchor-link {
+    @include transition-all();
+    color: $neutral-color-light;
+    margin-left: $base-value-half;
+    &:hover {
+      color: $link-hover-color;
+      text-decoration: none;
+    }
+  }
+}
+
+// MQ overrides ------------------------------------------------------------------------------------------------
+
+@media screen and (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }

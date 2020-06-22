@@ -1,0 +1,48 @@
+$iconSize: 1.5rem;
+$iconStroke: 10px;
+
+.mobile-menu {
+  position: relative;
+  display: inline-block;
+  height: 100%;
+}
+
+.mobile-menu-icon {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+  .icon {
+    height: $iconSize;
+    width: $iconSize;
+
+    polyline {
+      stroke: currentColor;
+      stroke-width: $iconStroke;
+      stroke-linecap: round;
+      transition: all 0.25s ease-out;
+      transition-timing-function: cubic-bezier(0.42, 0, 0.58, 1); // ease in/out
+    }
+
+  }
+
+  &.open {
+    .icon {
+      polyline {
+        stroke-width: $iconStroke * 1.5;
+        &:nth-of-type(1) {
+          transform: rotate(45deg) translateY(-25px) translateX(20px);
+        }
+        &:nth-of-type(2) {
+          transform: translateX(50px) scaleX(0);
+          /*opacity: 0;*/
+        }
+        &:nth-of-type(3) {
+          transform: rotate(-45deg) translateY(0) translateX(-55px);
+        }
+      }
+    }
+  }
+}

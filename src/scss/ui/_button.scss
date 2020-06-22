@@ -1,0 +1,200 @@
+.button {
+  @extend .control-label;
+  @extend .u-unselectable;
+  padding: $base-value-quarter $base-value;
+  border-radius: $radius-base;
+  background-color: $button-primary-color;
+  border: 2px solid $button-primary-color;
+  color: #fff;
+  transition: all 0.3s ease;
+  margin: 0;
+  height: $control-height;
+  &.pill {
+    border-radius: $radius-full;
+  }
+  &.block {
+    display: block;
+    width: 100%;
+  }
+  &.large {
+    padding: $base-value-half ($base-value + $base-value-half);
+    font-size: $font-size-normal;
+    text-transform: none;
+    height: $control-height-large;
+  }
+  &.toggle {
+  }
+  &.toggled-on {
+    border: 2px solid $primary-color-dark;
+  }
+  &.toggled-off {}
+
+  &:hover {
+    background: $button-primary-color-over;
+    border: 2px solid $button-primary-color-over;
+    cursor: pointer;
+    color: #fff;
+    text-decoration: none;
+  }
+
+}
+
+@mixin button-variant($faceColor, $textColor: false) {
+  $overColor: adj-darker($faceColor, 10, 5%, 5);
+  $faceOverColor: $overColor;
+  $outlineColor: $faceColor;
+  $outlineColorOver: $overColor;
+  $textOverColor: $textColor;
+
+  @if $textColor == false {
+    $textColor: choose-contrast-color($faceColor);
+    $textOverColor: choose-contrast-color($faceOverColor);
+  }
+
+  background-color: $faceColor;
+  border-color: $outlineColor;
+  color: $textColor;
+  box-shadow: 0 2px 0 adj-darker($faceColor, 15, 5%, 5);
+  &:hover {
+    background: $faceOverColor;
+    border-color: $outlineColorOver;
+    color: $textOverColor;
+  }
+
+  &.toggled-on {
+    background-color: adj-darker($faceColor, 5, 5%, 5);
+    border: 2px solid $faceOverColor;
+    box-shadow: inset 2px 2px 3px adj-darker($faceColor, 15, 5%, 5), 0 2px 0 adj-darker($faceColor, 15, 5%, 5);
+  }
+
+  &.outline {
+    $outlineColor: $faceColor;
+    $outlineColorOver: $overColor;
+    $textColor: $faceColor;
+    $textOverColor: $overColor;
+    $faceColor: transparent;
+    $faceOverColor: rgba($faceOverColor, 0.1);
+    box-shadow: none;
+    &.link {
+      box-shadow: none;
+      border-color: transparent;
+      &:hover {
+        border-color: transparent;
+      }
+    }
+    background-color: $faceColor;
+    border-color: $outlineColor;
+    color: $textColor;
+    &.toggled-on {
+      background-color: rgba($textColor, .1);
+      box-shadow: inset 2px 2px 3px rgba(adj-darker($textColor, 15, 5%, 5), .5);
+    }
+    &:hover {
+      background: $faceOverColor;
+      border-color: $outlineColorOver;
+      color: $textOverColor;
+    }
+  }
+}
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  @extend .button;
+  @include button-variant($button-primary-color, white);
+
+  i[class^="fa"].left {
+    margin-right: $base-value-half;
+  }
+  i[class^="fa"].right {
+    margin-left: $base-value-half;
+  }
+
+  @each $status, $color in $statusColor {
+    &.#{$status} {
+      @include button-variant($color, map-get($statusTextColor, $status));
+    }
+  }
+
+  &:active,
+  &:focus {
+    @extend .control-border-style-active;
+  }
+  &.disabled,
+  &:disabled {
+    @extend .control-border-style-disabled;
+    box-shadow: none;
+    background-color: $form-color-disabled-text;
+    border: 2px solid $form-color-disabled-text;
+    color: $grey6;
+    &:hover {
+      @extend .control-border-style-disabled;
+      background-color: $form-color-disabled-text;
+      border: 2px solid $form-color-disabled-text;
+      color: $grey6;
+      cursor: default;
+    }
+    &:focus {
+      @extend .control-border-style-disabled;
+    }
+  }
+
+
+}
+
+.button-stack-horizontal-spaced {
+  button:not(:last-of-type) {
+    margin-right: $base-value-quarter;
+  }
+}
+
+.button-stack-horizontal {
+  button {
+    border-radius: 0;
+    height: $control-height;
+  }
+  button:first-of-type {
+    border-radius: $radius-base 0 0 $radius-base;
+  }
+  button:last-of-type {
+    border-radius: 0 $radius-base $radius-base 0;
+  }
+}
+
+.button-stack-vertical-spaced {
+  display: inline-block;
+  button {
+    display: block;
+    width: 100%;
+    text-align: left;
+    height: $control-height;
+  }
+  button:not(:last-of-type) {
+    margin-bottom: $base-value-quarter;
+  }
+}
+
+.button-stack-vertical {
+  display: inline-block;
+  button {
+    border-radius: 0;
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+  button:first-of-type {
+    border-radius: $radius-base $radius-base 0 0 ;
+  }
+  button:last-of-type {
+    border-radius: 0 0 $radius-base $radius-base;
+  }
+}
+
+.button-stack-expanded-horizontal {
+  button {
+    border-radius: 0;
+    padding: 0 $base-value * 2;
+    height: $control-height-large;
+  }
+}

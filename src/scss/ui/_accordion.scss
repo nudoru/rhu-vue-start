@@ -1,0 +1,76 @@
+.accordion-row {
+  position: relative;
+  margin-bottom: $base-value-quarter;
+  &:hover {
+    z-index: 1;
+  }
+  .header {
+    @include transition-all();
+    border: 1px solid transparent;
+    border-radius: $radius-base;
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+    align-items: center;
+    background-color: #fff;
+    height: $control-height;
+    line-height: $control-height;
+    .toggle-chevron {
+      padding: $base-value;
+      padding-right: 0;
+      color: $primary-color;
+    }
+    .label {
+      @extend .control-label;
+      @extend .u-unselectable;
+      position: relative;
+      flex: 1;
+      padding: 0 $base-value;
+      color: $primary-color-dark;
+      .right {
+        position: absolute;
+        right: $base-value;
+        top: 50%;
+        transform: translateY(-50%);
+        text-align: right;
+        display: flex;
+        align-items: center;
+        &:not(:last-child) {
+          margin-right: $base-value-quarter;
+        }
+      }
+    }
+    &:hover {
+      @extend .control-border-style-active;
+      background-color: $primary-color-light;
+    }
+
+  }
+  .accordion-row-content {
+    position: relative;
+    padding: $base-value;
+    overflow: hidden;
+    border-radius: 0 0 $radius-base $radius-base;
+    background-color: #fff;
+  }
+
+  &.scroll {
+    .accordion-row-content {
+      overflow: auto;
+    }
+  }
+
+  &.closed {}
+
+  &.open {
+    @extend .shadow-sm;
+    border: 1px solid $primary-color;
+    border-radius: $radius-base;
+    .header {
+      @extend .shadow-xs;
+      border-radius: $radius-base $radius-base 0 0;
+    }
+    .content {}
+  }
+
+}

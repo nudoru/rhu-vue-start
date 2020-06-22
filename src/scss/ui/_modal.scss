@@ -1,0 +1,82 @@
+.modal-cover {
+  @extend .u-full-cover-flex;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: $zindex-modal;
+}
+
+.modal {
+  @extend .box;
+  @extend .shadow-xl;
+  @extend .u-centered;
+  z-index: $zindex-modal + 1;
+  position: fixed;
+  max-width: 75%;
+  max-height: 95%;
+  background-color: #fff;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "title title"
+    "glyph content"
+    "controls controls";
+  flex-direction: column;
+
+  .title {
+    grid-area: title;
+    padding: 0 $base-value;
+    border-bottom: $control-border-light;
+    height: $control-height-large;
+    align-self: center;
+    h1 {
+      @extend .control-title;
+      line-height: $control-height-large;
+    }
+  }
+  .open-glyph {
+    grid-area: glyph;
+    padding: $base-value;
+    padding-right: 0;
+    justyify-self: center;
+    align-self: start;
+  }
+  .content {
+    grid-area: content;
+    padding: $base-value;
+    flex: 1;
+    overflow-y: auto;
+  }
+  .controls {
+    grid-area: controls;
+    border-top: $control-border-mid;
+    background-color: $neutral-color-light;
+    text-align: right;
+    height: $control-height-large;
+  }
+  &.full {
+    width: 95%;
+    max-width: 95%;
+  }
+  &.content-padding-none {
+    .content {
+      padding: 0;
+    }
+  }
+  @each $status, $color in $statusColor {
+    &.#{$status} {
+      .title {
+        //background-color: map-get($statusColorPalel, $status);
+        h1 {
+          color: map-get($statusColorBlack, $status);
+        }
+      }
+      border-radius: 0 $radius-base $radius-base 0;
+      border-left: 5px solid $color;
+    }
+  }
+
+  @include mq("tablet", max) {
+    max-width: 95%;
+    width: 95%;
+  }
+}

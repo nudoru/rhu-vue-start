@@ -1,27 +1,19 @@
-<style lang="scss" scoped>
-    .Content{}
-</style>
-
-<template>
-    <section class='app-content'>
-        <slot></slot>
-    </section>
-</template>
-
-<script>
-  export default {
-    name: 'Content',
-    components: {},
-    props: {
-      p: {
-        type: Boolean,
-        default: false
-      }
-    },
-    data() {
-      return {};
-    },
-    computed: {},
-    methods: {}
-  };
+<script type="text/jsx">
+export default {
+  name      : "Content",
+  functional: true,
+  props   : {
+    p: {
+      type   : Boolean,
+      default: false
+    }
+  },
+  render(h, context) {
+    return (
+      <section class='app-content'>
+        {context.children}
+      </section>
+    );
+  },
+};
 </script>

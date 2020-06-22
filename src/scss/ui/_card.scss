@@ -1,0 +1,160 @@
+// Because of the stacked effect, the card can't have border radius / overflow hidden
+// so each area needs to
+.card {
+  @extend .box;
+  @extend .c-round-all;
+  @include transition-all();
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  grid-template-areas:
+    'header'
+    'content'
+    'footer';
+  justify-items: center;
+  background-color: #fff;
+
+  &.stack-right {
+    @include stacked-cards-right();
+    overflow: visible;
+  }
+
+  &.stack-bottom {
+    @include stacked-cards();
+    overflow: visible;
+  }
+
+  .header {
+    @extend .c-round-top;
+    grid-area: header;
+    position: relative;
+    width: 100%;
+    padding: 1rem 2rem;
+    background-color: $primary-color;
+    overflow: hidden;
+    &.dark {
+      h1,
+      .icon {
+        color: $grey8;
+        text-shadow: $shadow-text-light;
+      }
+    }
+    img {
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    .icon {
+      position: relative;
+      z-index: 1;
+      font-size: 4rem;
+      color: #fff;
+      margin-bottom: 1rem;
+      text-shadow: $shadow-text-dark;
+      text-align: center;
+    }
+    h1 {
+      @extend .h4;
+      margin: 0;
+      position: relative;
+      color: #fff;
+      text-shadow: $shadow-text-dark;
+    }
+  }
+
+  .content {
+    grid-area: content;
+    position: relative;
+    width: 100%;
+    padding: 1rem 2rem;
+    background-color: white;
+    .title {
+      h1 {
+        @extend .control-title;
+        color: $primary-color-dark;
+      }
+    }
+    .description {
+      @include line-clamp(6);
+      margin: 1rem 0;
+      p {
+        color: $grey6;
+        // @extend .control-message;
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  .footer {
+    @extend .c-round-bottom;
+    overflow: hidden;
+    grid-area: footer;
+    align-self: center;
+    width: 100%;
+    padding: 1rem 2rem;
+    background-color: $neutral-color-light;
+  }
+
+
+
+  &.active {
+    &:hover {
+      @extend .shadow-lg;
+      transform: scale(1.02) translateY(-5px);
+      z-index: 1;
+      // TODO
+      //&.stack-bottom {
+      //  &:after, &:before {
+      //    @include transition-all();
+      //    transform: scale(.85);
+      //  }
+      //}
+    }
+    &:focus {
+      outline: 1px dashed $blue;
+    }
+    &.disabled {
+      &:hover {
+        @extend .control-border-style-disabled;
+      }
+    }
+  }
+
+  @each $status, $color in $statusColor {
+    &.#{$status} {
+      .header {
+        background: control-gradient(map-get($statusColorHueShift, $status), $color);
+      }
+      .content {
+        .title h1 {
+          color: map-get($statusColorBlack, $status);
+        }
+      }
+    }
+  }
+
+}
+
+.card-stack-horizontal {
+  @extend .card-grid-x3;
+  margin-bottom: $scale3;
+  & > * {
+    margin: 0 !important;
+    width: 100% !important;
+  }
+}
+
+.card-stack-vertical {
+  @extend .card-grid-x1;
+  //& > .card-fancy {
+  //  @extend .card-fancy-row;
+  //}
+  margin-bottom: $scale3;
+}
+
+

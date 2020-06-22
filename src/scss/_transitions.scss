@@ -24,3 +24,17 @@
 .fade-slow-enter-to {
   opacity: 1;
 }
+
+.fadedown-enter-active,
+.fadedown-leave-active {
+  @include transition-all(.1s);
+}
+.fadedown-enter,
+.fadedown-leave-to {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+.fadedown-enter-to {
+  opacity: 1;
+  transform: translateY(0);
+}

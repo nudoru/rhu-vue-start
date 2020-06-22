@@ -1,0 +1,67 @@
+.icon {
+  display: inline-block;
+}
+
+// Box for a font-awesome style icon span > i
+// Also for avatars span > img
+@mixin icon-container($size, $iconsize) {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: $size;
+  height: $size;
+  font-size: $iconsize;
+}
+
+@each $size, $value in $iconSizes {
+  @each $status, $color in $statusColor {
+    .icon-#{$status}-#{$size} {
+      @include icon-container($value, map-get($iconFontSizes, $size));
+      border-radius: 50%;
+      background: control-gradient(map-get($statusColorHueShift, $status), $color);
+      color: map-get($statusTextColor, $status);
+    }
+  }
+}
+
+.icon-card-header-base {
+  @extend .shadow-sm;
+  background: linear-gradient(-20deg, $teal-tint3, #fff);
+  border-radius: 50%;
+  border: 2px solid white;
+  i {
+    color: #333;
+    background: linear-gradient(-20deg, $teal-shade3, $teal-shade2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+@each $size, $value in $iconSizes {
+  .icon-card-header-#{$size} {
+    @extend .icon-card-header-base;
+    @include icon-container($value, map-get($iconFontSizes, $size));
+  }
+}
+
+.icon-card-header-square-xl {
+  @extend .shadow-sm;
+  position: relative;
+  font-size: 2rem;
+  width: 75px;
+  height: 75px;
+  line-height: 75px;
+  background: linear-gradient(-20deg, $teal-tint3, #fff);
+  text-align: center;
+  border-radius: 0.25rem;
+  border: 2px solid #fff;
+  i {
+    position: relative;
+    top: 5px;
+    color: #333;
+    background: linear-gradient(-20deg, $teal-shade3, $teal-shade2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}

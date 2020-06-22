@@ -1,28 +1,81 @@
 // Borrowing from Tailwind css
-// Eventually replacing utils.sass
+
+$position: (
+  'static': static,
+  'fixed': fixed,
+  'absolute': absolute,
+  'relative': relative,
+  'sticky': sticky,
+);
+@each $name, $value in $position {
+  .#{$name} {
+    display: $value;
+  }
+}
+
+$display: (
+  'hidden': none,
+  'block': block,
+  'inline': inline,
+  'inline-block': inline-block,
+  'flex': flex,
+  'inline-flex': inline-flex,
+  'grid': grid,
+  'inline-grid': inline-grid,
+  'flow-root': flow-root,
+);
+@each $name, $value in $display {
+  .#{$name} {
+    display: $value;
+  }
+}
+
+$overflowTypes: overflow, overflow-x, overflow-y;
+$overflowValues: auto, visible, hidden, scroll;
+@each $overflow in $overflowTypes {
+  @each $values in $overflowValues {
+    .#{$overflow}-#{$values} {
+      overflow: $values;
+    }
+  }
+}
+
+$borderRadius: (
+  'all': $radius-base,
+  'top': $radius-base $radius-base 0 0,
+  'right': 0 $radius-base $radius-base 0,
+  'bottom': 0 0 $radius-base $radius-base,
+  'left': $radius-base 0 0 $radius-base,
+);
+@each $side, $value in $borderRadius {
+  .c-round-#{$side} {
+    border-radius: $value;
+    overflow: hidden;
+  }
+}
 
 $spacings: (
-  "m": "margin",
-  "p": "padding",
+  'm': 'margin',
+  'p': 'padding',
 );
 $positions: (
-  "t": "top",
-  "r": "right",
-  "b": "bottom",
-  "l": "left",
+  't': 'top',
+  'r': 'right',
+  'b': 'bottom',
+  'l': 'left',
 );
 $dimensions: (
-  "w": "width",
-  "h": "height",
-  "min-w": "min-width",
-  "max-w": "max-width",
-  "min-h": "min-height",
-  "max-h": "max-height",
+  'w': 'width',
+  'h': 'height',
+  'min-w': 'min-width',
+  'max-w': 'max-width',
+  'min-h': 'min-height',
+  'max-h': 'max-height',
 );
 $dimValues: (
-  "auto": auto,
-  "screen": 100,
-  "full": 100%,
+  'auto': auto,
+  'screen': 100,
+  'full': 100%,
 );
 @each $scale, $value in $scales {
   .text-#{$scale} {
@@ -52,11 +105,11 @@ $dimValues: (
 
 @each $dm, $dims in $dimensions {
   @each $dmv, $value in $dimValues {
-    $unit: "";
+    $unit: '';
 
-    @if $dmv == "screen" {
+    @if $dmv == 'screen' {
       $unit: vw;
-      @if ($dm == "h" or $dm == "min-h" or $dm == "max-h") {
+      @if ($dm == 'h' or $dm == 'min-h' or $dm == 'max-h') {
         $unit: vh;
       }
     }
@@ -75,9 +128,9 @@ $alignments: left, right, center;
 }
 
 $fontWeights: (
-  "light": $font-weight-light,
-  "normal": $font-weight-normal,
-  "bold": $font-weight-bold,
+  'light': $font-weight-light,
+  'normal': $font-weight-normal,
+  'bold': $font-weight-bold,
 );
 @each $weight, $value in $fontWeights {
   .text-#{$weight} {
@@ -86,10 +139,10 @@ $fontWeights: (
 }
 
 $fontTransforms: (
-  "uppercase": uppercase,
-  "lowercase": lowercase,
-  "capitalize": capitalize,
-  "normal-case": none,
+  'uppercase': uppercase,
+  'lowercase': lowercase,
+  'capitalize': capitalize,
+  'normal-case': none,
 );
 @each $transform, $value in $fontTransforms {
   .#{$transform} {
@@ -98,12 +151,12 @@ $fontTransforms: (
 }
 
 $letterSpacings: (
-  "tighter": -0.05rem,
-  "tight": -0.025rem,
-  "normal": 0,
-  "wide": 0.025rem,
-  "wider": 0.05rem,
-  "widest": 0.1rem,
+  'tighter': -0.05rem,
+  'tight': -0.025rem,
+  'normal': 0,
+  'wide': 0.025rem,
+  'wider': 0.05rem,
+  'widest': 0.1rem,
 );
 @each $track, $value in $letterSpacings {
   .tracking-#{$track} {
@@ -112,20 +165,20 @@ $letterSpacings: (
 }
 
 $leadings: (
-  "none": 1,
-  "tight": 1.25,
-  "snug": 1.375,
-  "normal": 1.5,
-  "relaxed": 1.625,
-  "loose": 2,
-  "3": 0.75rem,
-  "4": 1rem,
-  "5": 1.25rem,
-  "6": 1.5rem,
-  "7": 1.75rem,
-  "8": 2rem,
-  "9": 2.25rem,
-  "10": 2.5rem,
+  'none': 1,
+  'tight': 1.25,
+  'snug': 1.375,
+  'normal': 1.5,
+  'relaxed': 1.625,
+  'loose': 2,
+  '3': 0.75rem,
+  '4': 1rem,
+  '5': 1.25rem,
+  '6': 1.5rem,
+  '7': 1.75rem,
+  '8': 2rem,
+  '9': 2.25rem,
+  '10': 2.5rem,
 );
 @each $leading, $value in $leadings {
   .leading-#{$leading} {
@@ -142,8 +195,12 @@ $leadings: (
     background-color: $color;
   }
 
+  .bg-#{$status}-light {
+    background-color: map-get($statusColorPale, $status);
+  }
+
   .border-#{$status} {
-    border: 1ps solid $color;
+    border: 1px solid $color;
   }
 
   .border-r-#{$status} {
@@ -152,13 +209,101 @@ $leadings: (
   }
 }
 
-$overflowTypes: overflow, overflow-x, overflow-y;
-$overflowValues: auto, visible, hidden, scroll;
-@each $overflow in $overflowTypes {
-  @each $values in $overflowValues {
-    .#{$overflow}-#{$values} {
-      overflow: $values;
-    }
+.flex-grow {
+  flex-grow: 1;
+}
+
+.flex-grow-0 {
+  flex-grow: 0;
+}
+
+.flex-shrink {
+  flex-grow: 1;
+}
+
+.flex-shrink-0 {
+  flex-grow: 0;
+}
+
+$flexChild: (
+  'initial': 0 1 auto,
+  '1': 1 1 0%,
+  'auto': 1 1 auto,
+  'none': none,
+);
+@each $flex, $value in $flexChild {
+  .flex-#{$flex} {
+    flex: $value;
+  }
+}
+
+$flexDirection: row, row-reverse, column, column-reverse;
+@each $direction in $flexDirection {
+  .flex-#{$direction} {
+    flex-direction: $direction;
+  }
+}
+
+$flexWrap: nowrap, wrap, wrap-reverse;
+@each $wrap in $flexWrap {
+  .flex-#{$wrap} {
+    flex-wrap: $wrap;
+  }
+}
+
+// self "auto": auto,
+$flexAlignItems: (
+  'stretch': stretch,
+  'start': flex-start,
+  'center': center,
+  'end': flex-end,
+  'baseline': baseline,
+);
+@each $flex, $value in $flexAlignItems {
+  .items-#{$flex} {
+    align-items: $value;
+  }
+  .self-#{$flex} {
+    align-self: $value;
+  }
+}
+
+$flexAlignContent: (
+  'start': flex-start,
+  'center': center,
+  'end': flex-end,
+  'between': space-between,
+  'around': space-around,
+);
+@each $flex, $value in $flexAlignContent {
+  .content-#{$flex} {
+    align-content: $value;
+  }
+  .justify-#{$flex} {
+    justify-content: $value;
+  }
+}
+
+$flexOrder: (
+  'first': -9999,
+  'last': 9999,
+  'none': 0,
+  1: 1,
+  2: 2,
+  3: 3,
+  4: 4,
+  5: 5,
+  6: 6,
+  7: 7,
+  8: 8,
+  9: 9,
+  10: 10,
+  11: 11,
+  12: 12,
+);
+@each $flex, $value in $flexOrder {
+  .order-#{$flex} {
+    order: $value;
   }
 }
 
@@ -175,58 +320,120 @@ $overflowValues: auto, visible, hidden, scroll;
   font-weight: $font-weight-normal;
 }
 
-$shadow-text-dark: 1px 1px 0 rgba(black, 0.25);
-$shadow-text-light: 1px 1px 0 rgba(white, 0.5);
+.u-list-plain {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 
-/*
-.u-padding-none
-padding: 0
+  li {
+    margin-left: 0;
+    padding-left: 0;
+  }
+}
 
-.u-padding
-padding: $scale0
+.u-list-plain-horizontal {
+  @extend .u-list-plain;
+  li {
+    display: inline-block;
+  }
+}
 
-.u-padding-right
-padding-right: $scale0
+.u-hidden {
+  display: none;
+  visibility: hidden;
+}
 
-.u-padding-right-double
-padding-right: $scale0*2
+.u-visible {
+  display: block;
+  visibility: visible;
+}
 
-.u-padding-left
-padding-left: $scale0
+//https://hugogiraudel.com/2020/05/18/using-calc-to-figure-out-optimal-line-height/;
+.u-calc-lineheight {
+  line-height: calc(2px + 2ex + 2px);
+}
 
-.u-padding-left-double
-padding-left: $scale0*2
+.u-full-cover-flex {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-.u-margin-none
-margin: 0
+.u-centered {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
-.u-padding-top
-padding-top: $scale0
+.img-responsive {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
 
-.u-margin-top
-margin-top: $scale0
+.u-full-background-cover {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
 
-.u-margin-top-double
-margin-top: $scale0*2
+// Container for any 3d transforms;
+.u-threedwrapper {
+  position: relative;
+  perspective: 800px;
+}
 
-.u-margin-top-tripple
-margin-top: $scale0*3
+// Base styles for any 3d transformed object;
+.u-threedobject {
+  transform-style: preserve-3d;
+  transform-origin: 50% 50% 0;
+}
 
-.u-margin-bottom
-margin-bottom: $scale0
+.u-unselectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
 
-.u-margin-bottom-double
-margin-bottom: $scale0*2
+.shadow-text-light {
+  text-shadow: $shadow-text-light;
+}
 
-.u-margin-bottom-triple
-margin-bottom: $scale0*3
+.shadow-text-dark {
+  text-shadow: $shadow-text-dark;
+}
 
-.u-margin-right
-margin-right: $scale0
+.shadow-xs {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.075);
+}
 
-.u-margin-left
-margin-left: $scale0
+.shadow-sm {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05),
+    2px 6px 8px -5px rgba(0, 0, 0, 0.15);
+}
 
-.u-margin-center
-margin: 0 auto
-          */
+.shadow-md {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05),
+    4px 8px 15px -7px rgba(0, 0, 0, 0.1), 4px 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.shadow-lg {
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1), 0 8px 8px rgba(0, 0, 0, 0.05),
+    4px 23px 40px -15px rgba(0, 0, 0, 0.15), 8px 30px 64px rgba(0, 0, 0, 0.1);
+}
+
+.shadow-xl {
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05), 0 8px 8px rgba(0, 0, 0, 0.1),
+    0 16px 16px rgba(0, 0, 0, 0.1), 4px 32px 32px rgba(0, 0, 0, 0.05),
+    8px 50px 64px rgba(0, 0, 0, 0.15);
+}

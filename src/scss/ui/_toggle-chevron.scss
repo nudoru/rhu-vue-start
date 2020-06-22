@@ -1,0 +1,60 @@
+$iconSize: 1rem;
+$iconStroke: 2px;
+
+.toggle-chevron {
+  position: relative;
+  display: inline-block;
+  height: 100%;
+}
+
+.toggle-chevron-icon {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+  .icon {
+    color: inherit;
+    fill: currentColor;
+    height: $iconSize;
+    width: $iconSize;
+
+    .chevronGroup {
+      stroke-width: $iconStroke;
+      stroke-linecap: round;
+      will-change: transform;
+      transform-origin: 8px 8px;
+      transition: transform .3s ease-out;
+      & > * {
+        transform-origin: 8px 8px;
+        stroke-dasharray: 17;
+        transform: translateY(3px);
+        transition: transform .3s, stroke-dashoffset .3s;
+        transition-timing-function: ease-out;
+      }
+
+      & > *:first-child {
+        stroke-dashoffset: 8.5
+      }
+
+      & > *:last-child {
+        stroke-dashoffset: 8.5
+      }
+    }
+
+  }
+
+  &.open {
+    .icon {
+      .chevronGroup {
+        transform: rotate(-90deg);
+        & > *:first-child,
+        & *:last-child {
+          stroke-dashoffset: 0;
+          transform: translateY(0px)
+        }
+      }
+    }
+  }
+}

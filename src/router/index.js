@@ -6,40 +6,52 @@ import VueComponents from '../views/VueComponents';
 import Components from '../views/Components';
 import Forms from '../views/Forms';
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
   {
-    path     : '/',
-    name     : 'Home',
-    component: Home
+    path: '/',
+    name: 'Home',
+    component: Home,
+    glyph: 'fas fa-home',
+    meta: {
+      title: 'IMA Home page',
+    },
   },
   {
-    path     : '/typography',
-    name     : 'Typography',
-    component: Typography
+    path: '/typography',
+    name: 'Typography',
+    component: Typography,
   },
   {
-    path     : '/vuecomponents',
-    name     : 'Vue Comp',
-    component: VueComponents
+    path: '/vuecomponents',
+    name: 'Vue Comp',
+    component: VueComponents,
   },
   {
-    path     : '/components',
-    name     : 'HTML Comp',
-    component: Components
+    path: '/components',
+    name: 'HTML Comp',
+    component: Components,
   },
   {
-    path     : '/forms',
-    name     : 'Forms',
-    component: Forms
-  }
-]
+    path: '/forms',
+    name: 'Forms',
+    component: Forms,
+  },
+];
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes
-})
+  routes,
+});
 
-export default router
+// Example from https://alligator.io/vuejs/vue-router-modify-head/
+router.beforeEach((to, from, next) => {
+  if (to.hasOwnProperty('meta') && to.meta.hasOwnProperty('title')) {
+    document.title = to.meta.title;
+  }
+  next();
+});
+
+export default router;

@@ -1,0 +1,31 @@
+.calendar-date
+  @extend .u-list-plain
+  @extend .shadow-xs
+  display: inline-block
+  min-width: 75px
+  border: 1px solid $primary-color
+  backgroud: #fff
+  overflow: hidden
+  border-radius: $radius-base
+  li
+    width: 100%
+    text-align: center
+    margin: 0
+    padding: 0
+  .month
+    background-color: $primary-color-dark
+    color: #fff
+    text-transform: uppercase
+    font-size: $font-size-small
+    font-weight: $font-weight-bold
+    padding: $base-value-quarter
+  .day
+    font-size: 2.5rem
+    color: $primary-color-dark
+    padding: $base-value $base-value-quarter
+    padding-bottom: 0
+  .year
+    color: $primary-color
+    font-weight: 400
+    font-size: $font-size-small
+    padding: $base-value-quarter

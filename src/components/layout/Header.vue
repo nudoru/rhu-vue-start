@@ -1,29 +1,28 @@
-<style lang="scss" scoped></style>
-
-<template>
-  <section role="banner" class="app-header">
-    <div class="container-horizontal">
-      <div>
-        <slot></slot>
-      </div>
-      <div class="end">
-        <AppNavigation />
-      </div>
-    </div>
-  </section>
-</template>
-
-<script>
-import AppNavigation from "../ui/AppNavigation";
+<script type="text/jsx">
+import AppNavigation from "../ui/organisms/AppNavigation";
 
 export default {
-  name: "Header",
-  components: { AppNavigation },
-  props: [],
-  data() {
-    return {};
+  name      : "Header",
+  functional: true,
+  props   : {
+    p: {
+      type   : Boolean,
+      default: false
+    }
   },
-  methods: {},
-  computed: {},
+  render(h, context) {
+    return (
+            <section role="banner" class="app-header">
+              <div class="container-horizontal">
+                <div>
+                  {context.children}
+                </div>
+                <div class="end">
+                  <AppNavigation/>
+                </div>
+              </div>
+            </section>
+    );
+  },
 };
 </script>

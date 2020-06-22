@@ -1,31 +1,23 @@
-<style lang="scss" scoped>
-    .Footer{}
-</style>
-
-<template>
-    <section class="app-footer">
-        <div class="container-horizontal">
-            <div class="end">
-                <p>Copyright ©2020</p>
-            </div>
-        </div>
-    </section>
-</template>
-
-<script>
+<script type="text/jsx">
   export default {
-    name: 'Footer',
-    components: {},
-    props: {
+    name      : "Footer",
+    functional: true,
+    props   : {
       p: {
-        type: Boolean,
+        type   : Boolean,
         default: false
       }
     },
-    data() {
-      return {};
+    render(h, context) {
+      return (
+        <section class="app-footer">
+          <div class="container-horizontal">
+            <div class="end">
+              <p>Copyright ©2020</p>
+            </div>
+          </div>
+        </section>
+      );
     },
-    computed: {},
-    methods: {}
   };
 </script>

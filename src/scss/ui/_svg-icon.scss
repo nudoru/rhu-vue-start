@@ -1,0 +1,17 @@
+.svgicon {
+  display: inline-block;
+  color: inherit;
+  vertical-align: middle;
+  width: 1em;
+  height: 1em;
+}
+
+.svg-white {
+  filter: url('data:image/svg+xmlcharset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feComponentTransfer color-interpolation-filters="sRGB"><feFuncR type="table" tableValues="0.5 0.5" /><feFuncG type="table" tableValues="0.5 0.5" /><feFuncB type="table" tableValues="0.5 0.5" /></feComponentTransfer><feColorMatrix type="matrix" color-interpolation-filters="sRGB" values="0.4537 0.6921 0.1701 0 0 0.3141 0.7174 0.1512 0 0 0.24480000000000002 0.4806 0.21789999999999998 0 0 0 0 0 1 0" /><feColorMatrix type="matrix" color-interpolation-filters="sRGB" values="47.433 -42.184999999999995 -4.247999999999999 0 0 -12.567 18.415 -4.247999999999999 0 0 -12.567 -42.184999999999995 55.752 0 0 0 0 0 1 0" /><feColorMatrix type="hueRotate" color-interpolation-filters="sRGB" values="175" /></filter></svg>#filter');
+  filter: invert(1);
+}
+
+.svg-black {
+  filter: url('data:image/svg+xmlcharset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feComponentTransfer color-interpolation-filters="sRGB"><feFuncR type="table" tableValues="0.5 0.5" /><feFuncG type="table" tableValues="0.5 0.5" /><feFuncB type="table" tableValues="0.5 0.5" /></feComponentTransfer><feColorMatrix type="matrix" color-interpolation-filters="sRGB" values="0.4537 0.6921 0.1701 0 0 0.3141 0.7174 0.1512 0 0 0.24480000000000002 0.4806 0.21789999999999998 0 0 0 0 0 1 0" /><feColorMatrix type="matrix" color-interpolation-filters="sRGB" values="47.433 -42.184999999999995 -4.247999999999999 0 0 -12.567 18.415 -4.247999999999999 0 0 -12.567 -42.184999999999995 55.752 0 0 0 0 0 1 0" /><feColorMatrix type="hueRotate" color-interpolation-filters="sRGB" values="175" /></filter></svg>#filter');
+  filter: invert(0);
+}

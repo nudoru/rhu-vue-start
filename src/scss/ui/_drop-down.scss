@@ -1,0 +1,42 @@
+.drop-down {
+  position: relative;
+  display: inline-block;
+
+  & > button {
+    position: relative;
+    z-index: 1;
+  }
+
+  .drop-down-content {
+    @extend .button-stack-vertical;
+    @extend .shadow-md;
+    button {
+      border-radius: 0;
+    }
+    background-color: #fff;
+    //padding: $base-value-half;
+    padding-top: 0px; // top padding will be calc in JS based on button height
+    border-radius: $radius-base;
+    overflow: hidden;
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0; // height of the button
+    width: 100%;
+    z-index: 0;
+  }
+
+  .toggle-chevron {
+    display: inline-block;
+    padding-left: $base-value;
+    //margin-left: $base-value-half;
+    //border-left: 1px solid rgba(black, .2);
+  }
+
+  &.closed {}
+  &.open {
+    & > button {
+      border-radius: $radius-base $radius-base 0 0;
+    }
+  }
+}

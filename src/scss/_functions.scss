@@ -3,6 +3,10 @@
   @return $remSize * 1rem;
 }
 
+@function hexToRGB($hex) {
+  @return red($hex), green($hex), blue($hex);
+}
+
 //https://learnui.design/blog/color-in-ui-design-a-practical-framework.html
 
 /*

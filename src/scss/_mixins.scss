@@ -25,19 +25,57 @@
   overflow: hidden;
 }
 
-// Box for a font-awesome style icon div > i
-// Also for avatars div > img
-@mixin icon-container($size, $iconsize) {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: $size;
-  height: $size;
-  font-size: $iconsize;
+//https://stripesgenerator.com/
+@mixin stripes45deg10px($colora:black, $colorb:white) {
+  background-image: linear-gradient(135deg, $colora 25%, $colorb 25%, $colorb 50%, $colora 50%, $colora 75%, $colorb 75%, $colorb 100%);
+  background-size: 28.28px 28.28px;
 }
 
-@mixin stacked-cards($borderradius: $card-border-radius, $color: #fff) {
+@mixin animateStripes($speed: 1s, $offset: 28.28px) {
+  animation-name: move_stripes;
+  animation-duration: $speed;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  @keyframes move_stripes {
+    from {
+      background-position: 0;
+    }
+    to {
+      background-position: $offset;
+    }
+  }
+}
+
+/// Stripe builder https://css-tricks.com/striped-background-gradients/
+/// @author Hugo Giraudel
+/// @param {Direction} $direction - Gradient direction
+/// @param {List} $colors - List of colors
+/// @output `background-image` if several colors, `background-color` if only one
+@mixin stripes($direction, $colors) {
+  $length: length($colors);
+
+  @if $length > 1 {
+    $stripes: ();
+
+    @for $i from 1 through $length {
+      $stripe: (100% / $length) * ($i - 1);
+
+      @if $i > 1 {
+        $previous-color: nth($colors, $i - 1);
+        $stripes: append($stripes, $previous-color $stripe, comma);
+      }
+
+      $stripes: append($stripes, nth($colors, $i) $stripe, comma);
+    }
+    background-image: linear-gradient($direction, $stripes);
+  } @else if $length == 1 {
+    background-color: $colors;
+  }
+}
+
+
+
+@mixin stacked-cards($borderradius: $radius-base, $color: #fafafa) {
   transform-style: preserve-3d;
   &::before {
     @extend .shadow-sm;
@@ -46,6 +84,7 @@
     width: 90%;
     height: 100px;
     position: absolute;
+    left: 5%;
     bottom: -7px;
     margin: auto;
     border-radius: $borderradius;
@@ -58,7 +97,38 @@
     width: 80%;
     height: 100px;
     position: absolute;
+    left: 10%;
     bottom: -13px;
+    margin: auto;
+    border-radius: $borderradius;
+    transform: translateZ(-2px);
+  }
+}
+
+@mixin stacked-cards-right($borderradius: $radius-base, $color: #fafafa) {
+  transform-style: preserve-3d;
+  &::before {
+    @extend .shadow-sm;
+    background: $color;
+    content: '';
+    height: 90%;
+    width: 100px;
+    position: absolute;
+    right: -7px;
+    top: 5%;
+    margin: auto;
+    border-radius: $borderradius;
+    transform: translateZ(-1px);
+  }
+  &::after {
+    @extend .shadow-sm;
+    background: $color;
+    content: '';
+    height: 80%;
+    width: 100px;
+    position: absolute;
+    top: 10%;
+    right: -13px;
     margin: auto;
     border-radius: $borderradius;
     transform: translateZ(-2px);

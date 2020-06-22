@@ -1,0 +1,130 @@
+.table
+  margin: 0
+  margin-bottom: $base-value
+  padding: 0
+  width: 100%
+  table-layout: fixed
+  border-spacing: 0
+  border-collapse: collapse
+
+
+
+  caption
+    @extend .small
+
+  .column-feature
+    border: 1px solid $primary-color
+    background: $blue-tint3 !important
+
+  th, td
+    display: table-cell
+    padding: $table-cell-padding
+    border: none
+    vertical-align: middle
+
+  th
+    text-transform: uppercase
+    letter-spacing: 0.05rem
+    font-size: 0.8rem
+    i[class^='fa'].left
+      margin-right: $base-value-quarter
+    i[class^='fa'].right
+      margin-left: $base-value-quarter
+
+  thead
+    th
+      @extend .control-label
+      padding: 0 $table-cell-padding
+      height: $control-height
+      line-height: $control-height
+      color: $primary-color-dark
+      border-bottom: 1px solid $primary-color
+      text-align: left
+      &.sortable
+        @include transition-all()
+        @extend .u-unselectable
+        cursor: pointer
+        color: $primary-color
+        .sort-icon
+          margin-left: $base-value-half
+        &:hover
+          background-color: $primary-color-light
+      &.sorted
+        color: #fff
+        background-color: $primary-color
+        border-bottom: 1px solid $primary-color-dark
+        &:hover
+          background-color: $primary-color-dark
+
+  tfoot
+    th
+      text-align: left
+      border-bottom: none
+      border-top: $control-border-dark
+      vertical-align: top
+      color: $neutral-color-dark
+      padding: 0 $table-cell-padding
+      height: $control-height
+      line-height: $control-height
+
+  tbody
+    th
+      text-align: right
+      font-weight: $font-weight-bold
+      color: $primary-color
+    tr
+      border-bottom: $control-border-mid
+    tr:last-child
+      border-bottom: none
+
+  @each $status, $color in $statusColor
+    .#{$status}
+      background: $color
+      color: map-get($statusTextColor, $status)
+
+  &.compressed
+    th, td
+      padding: $table-cell-padding/3 $table-cell-padding/2
+
+  &.border-none
+    tbody
+      tr
+        border-bottom: none
+
+  &.zebra-rows
+    tbody
+      th, td
+        //border-bottom: 1px solid #fff
+      tr:nth-child(odd)
+        background-color: $table-color-row-zebra
+
+  &.zebra-cols
+    tbody
+      tr
+        th:nth-child(odd), td:nth-child(odd)
+          background-color: $table-color-column-zebra
+
+  &.hover-rows
+    tbody
+      tr
+        @include transition-all()
+      tr:hover
+        background-color: rgba($primary-color, .1)
+
+  &.auto
+    table-layout: auto
+
+  &.top
+    tbody
+      td
+        vertical-align: top
+
+  .start
+    text-align: left
+
+  .center
+    text-align: center
+
+  .end
+    text-align: right
+

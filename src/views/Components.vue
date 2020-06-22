@@ -6,6 +6,16 @@
 <template>
     <div class='container'>
         <section>
+            <div>
+                <h5>Calendar</h5>
+                <div>
+                    <ul class="calendar-date">
+                        <li class="month">Sept</li>
+                        <li class="day">22</li>
+                        <li class="year">2016</li>
+                    </ul>
+                </div>
+            </div>
             <div><h5>Cards as Grid</h5>
                 <div class="card-group-horizontal">
                     <div class="card">
@@ -325,7 +335,7 @@
                     </tr>
                     </tbody>
                 </table>
-                <table class="table zebra-rows zebra-cols border-none compressed">
+                <table class="table zebra-rows zebra-cols border-none">
                     <colgroup>
                         <col>
                         <col class="column-feature">

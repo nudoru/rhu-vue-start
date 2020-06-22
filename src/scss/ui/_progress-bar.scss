@@ -1,0 +1,111 @@
+.progress-bar {
+  display: inline-block;
+  position: relative;
+
+  .progress-bar-container {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    .label {
+      @extend .control-label;
+      position: relative;
+      margin-right: $base-value-half;
+      white-space: normal;
+      color: $neutral-color-dark;
+      align-self: flex-start;
+    }
+    .progress-bar-wrapper {
+      position: relative;
+      border-radius: 50%;
+      display: block;
+      flex: 1;
+      width: 200px;
+      .track {
+        position: relative;
+        box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+        background: $neutral-color-light;
+        border-radius: $radius-full;
+        overflow: hidden;
+        width: 100%;
+        height: 5px;
+      }
+      .indicator {
+        border-radius: $radius-full;
+        overflow: hidden;
+        background: $primary-color;
+        width: 50%;
+        height: 5px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        box-shadow: 10px 0 20px rgba($primary-color-light, 1);
+        // A transition here will interfere with frequent updates via a variable
+        //transition: width .3s ease;
+      }
+
+      .text-percent {
+        @extend .control-label;
+        position: relative;
+        text-align: right;
+      }
+
+      &.inline-percent {
+        display: flex;
+        align-items: center;
+        .track {
+          flex: 1;
+        }
+        .text-percent {
+          margin-left: $base-value-half;
+          text-align: left;
+        }
+      }
+
+      @each $size, $value in $chartSizes {
+        &.#{$size} {
+          .track {
+            height: $value;
+          }
+          .indicator {
+            height: $value;
+          }
+        }
+      }
+
+      @each $status, $color in $statusColor {
+        &.#{$status} {
+          .track {
+            box-shadow: inset
+              0
+              0
+              10px
+              rgba(map-get($statusColorBlack, $status), 0.2);
+          }
+          .indicator {
+            background-color: $color;
+            background-image: linear-gradient(
+              to left,
+              map-get($statusColorHueShift, $status),
+              $color
+            ); //$color;
+            box-shadow: 10px 0 10px rgba(map-get($statusColorPale, $status), 1);
+          }
+          .text-percent {
+            color: map-get($statusColorBlack, $status);
+          }
+        }
+        &.striped {
+          .indicator {
+            @include stripes45deg10px(
+              rgba(map-get($statusColorPale, $status), 0.15),
+              transparent
+            );
+            @include animateStripes();
+          }
+        }
+      }
+    }
+  }
+}

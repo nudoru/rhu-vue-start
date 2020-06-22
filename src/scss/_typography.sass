@@ -17,6 +17,39 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6
   font-smoothing: antialiased
   text-rendering: optimizeLegibility
 
+  //https://www.trysmudford.com/blog/css-header-legend/
+  &.line-left
+    display: grid
+    width: 100%
+    align-items: center
+    text-align: center
+    grid-template-columns: minmax(1rem, 1fr) auto
+    grid-gap: 1rem
+    &:before
+      content: ''
+      border-top: 1px solid
+  &.line-right
+    display: grid
+    width: 100%
+    align-items: center
+    text-align: center
+    grid-template-columns: auto minmax(20px, 1fr)
+    grid-gap: 1rem
+    &:after
+      content: ''
+      border-top: 1px solid
+  &.line-center
+    display: grid
+    width: 100%
+    align-items: center
+    text-align: center
+    grid-template-columns: minmax(1rem, 1fr) auto minmax(20px, 1fr)
+    grid-gap: 1rem
+    &:before,
+    &:after
+      content: ''
+      border-top: 1px solid
+
 h1, .h1
   font-size: $scale6
   margin-bottom: $scale4
@@ -55,8 +88,18 @@ p, ul, ol, li, pre, td, th, dl, dd, dt, label, legend
 p, ul, ol, blockquote
   margin-bottom: $scale2
 
+blockquote
+  background-color: $neutral-color-light
+  border-radius: $radius-base
+  margin: 0
+  padding: $scale2
+  padding-left: $scale0
+  font-size: $font-size-large
+
 pre
   font-family: $font-family-mono
+  overflow-x: auto
+  white-space: pre-wrap
 
 a, a:visited
   color: $link-color
