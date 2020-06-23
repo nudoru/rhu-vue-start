@@ -201,7 +201,6 @@
         size="xs"
         status="success"
         :stroke="7"
-        :showPercent="false"
       />
       <ProgressDonut
         :percent="progressPct.value"
@@ -209,7 +208,6 @@
         size="sm"
         status="danger"
         :stroke="4"
-        :showPercent="false"
       />
       <ProgressDonut
         :percent="progressPct.value"
@@ -217,7 +215,7 @@
         size="md"
         status="primary"
         :stroke="8"
-        :showPercent="false"
+        :center="`${progressPct.value}`"
       />
       <ProgressDonut
         :percent="progressPct.value"
@@ -225,7 +223,7 @@
         size="lg"
         status="warning"
         :stroke="2"
-        :showPercent="true"
+        :center="`${progressPct.value}%`"
       />
       <ProgressDonut
         :percent="progressPct.value"
@@ -233,7 +231,7 @@
         size="xl"
         status="secondary"
         :stroke="5"
-        :showPercent="true"
+        :center="`${progressPct.value}%`"
       />
     </div>
     <hr />
@@ -531,31 +529,31 @@
 </template>
 
 <script>
-import sampleJson from '../libs/sampleJson';
-import gsap from 'gsap';
-import Icon from '../components/ui/atoms/Icon';
-import Badge from '../components/ui/atoms/Badge';
-import Modal from '../components/ui/molecules/Modal';
-import Button from '../components/ui/atoms/Button';
-import Table from '../components/ui/molecules/Table';
-import Avatar from '../components/ui/atoms/Avatar';
-import TableObjData from '../components/ui/molecules/TableObjData';
-import Loading from '../components/ui/atoms/Loading';
-import ProgressDonut from '../components/ui/atoms/ProgressDonut';
-import Ribbon from '../components/ui/atoms/Ribbon';
-import AccordionRow from '../components/ui/molecules/AccordionRow';
-import ProgressBar from '../components/ui/atoms/ProgressBar';
-import DropDown from '../components/ui/molecules/DropDown';
-import ProgressDonutWrap from '../components/ui/molecules/ProgressDonutWrap';
-import MobileMenuIcon from '../components/ui/atoms/micro/MobileMenuIcon';
-import CheckBox from '../components/ui/atoms/CheckBox';
-import CalendarDate from '../components/ui/atoms/CalendarDate';
-import Box from '../components/ui/atoms/Box';
-import Card from '../components/ui/molecules/Card';
-import SVGIcon from '../components/ui/atoms/SVGIcon';
+import sampleJson from "../libs/sampleJson";
+import gsap from "gsap";
+import Icon from "../components/ui/atoms/Icon";
+import Badge from "../components/ui/atoms/Badge";
+import Modal from "../components/ui/molecules/Modal";
+import Button from "../components/ui/atoms/Button";
+import Table from "../components/ui/molecules/Table";
+import Avatar from "../components/ui/atoms/Avatar";
+import TableObjData from "../components/ui/molecules/TableObjData";
+import Loading from "../components/ui/atoms/Loading";
+import ProgressDonut from "../components/ui/atoms/ProgressDonut";
+import Ribbon from "../components/ui/atoms/Ribbon";
+import AccordionRow from "../components/ui/molecules/AccordionRow";
+import ProgressBar from "../components/ui/atoms/ProgressBar";
+import DropDown from "../components/ui/molecules/DropDown";
+import ProgressDonutWrap from "../components/ui/molecules/ProgressDonutWrap";
+import MobileMenuIcon from "../components/ui/atoms/micro/MobileMenuIcon";
+import CheckBox from "../components/ui/atoms/CheckBox";
+import CalendarDate from "../components/ui/atoms/CalendarDate";
+import Box from "../components/ui/atoms/Box";
+import Card from "../components/ui/molecules/Card";
+import SVGIcon from "../components/ui/atoms/SVGIcon";
 
 export default {
-  name: 'Home',
+  name: "Home",
   components: {
     SVGIcon,
     Card,
@@ -587,15 +585,15 @@ export default {
   data() {
     return {
       compStatus: [
-        'neutral',
-        'primary',
-        'secondary',
-        'info',
-        'success',
-        'warning',
-        'danger',
+        "neutral",
+        "primary",
+        "secondary",
+        "info",
+        "success",
+        "warning",
+        "danger",
       ],
-      compSizes: ['xs', 'sm', 'md', 'lg', 'xl'],
+      compSizes: ["xs", "sm", "md", "lg", "xl"],
       showModal: false,
       showLoading: true,
       progressPct: { value: 60 },
@@ -604,19 +602,19 @@ export default {
   computed: {},
   methods: {
     onClick() {
-      console.log('Master click');
+      console.log("Master click");
     },
     onToggleOn() {
-      console.log('toggle ON');
+      console.log("toggle ON");
     },
     onToggleOff() {
-      console.log('toggle OFF');
+      console.log("toggle OFF");
     },
     onAccordionOpen() {
-      console.log('accordion open');
+      console.log("accordion open");
     },
     onAccordionClose() {
-      console.log('accordion close');
+      console.log("accordion close");
     },
     getSampleJson() {
       return sampleJson.sample;

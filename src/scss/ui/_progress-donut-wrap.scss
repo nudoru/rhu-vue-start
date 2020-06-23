@@ -1,0 +1,17 @@
+.progress-donut-wrap {
+  position: relative;
+  display: inline-block;
+  .progress-donut-container {
+    position: relative;
+    z-index: 1;
+    svg {
+      transform: rotate(90deg);
+    }
+  }
+  .wrapped-component {
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0;
+  }
+}
