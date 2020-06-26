@@ -10,8 +10,10 @@
       ></div>
     </transition>
     <transition name="fade">
-      <section :class="getModalCls()" v-if="isVisible">
-        <div class="title" v-if="title.length > 0"><h1>{{ title }}</h1></div>
+      <Box :class="getModalCls()" v-if="isVisible" tag="section">
+        <div class="title" v-if="title.length > 0">
+          <h1>{{ title }}</h1>
+        </div>
         <div class="open-glyph" v-if="glyph.length > 0">
           <Icon size="lg" :status="status" :glyph="glyph" />
         </div>
@@ -32,7 +34,7 @@
             </button>
           </div>
         </div>
-      </section>
+      </Box>
     </transition>
   </div>
 </template>
@@ -40,10 +42,11 @@
 <script>
 import { validateStatus } from "../../libs/uiComponentUtilities.js";
 import Icon from "../atoms/Icon";
+import Box from "../atoms/Box";
 
 export default {
   name: "Modal",
-  components: { Icon },
+  components: { Box, Icon },
   props: {
     title: {
       type: String,

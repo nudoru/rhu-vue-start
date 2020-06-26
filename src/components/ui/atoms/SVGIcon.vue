@@ -56,34 +56,6 @@ const mounted = (el, id, props) => {
   svgEl.setAttribute('stroke-width', props.stroke);
 
   if(props.startColor && props.endColor) {
-
-    // Use a clipping mask to clip out svg shape - doesn't work
-    // let gradient = `<defs>
-    //           <linearGradient id="grad-${id}" x1="0" y1="0" x2="100%" y2="100%" gradientTransform="rotate(0)">
-    //               <stop offset="5%" stop-color=${props.startColor}  stop-opacity="1"/>
-    //               <stop offset="95%" stop-color=${props.endColor}  stop-opacity="1"/>
-    //           </linearGradient>
-    //           <clipPath id="clip-${id}">
-    //             ${svgEl.innerHTML}
-    //           </clipPath>
-    //       </defs>
-    //       <rect x="0" y="0" width="100%" height="100%" fill="url(#grad-${id})" clip-path="url(#clip-${id})"/>`;
-    // removeAllElements(svgEl);
-    // svgEl.insertAdjacentHTML('afterBegin', gradient);
-
-    // group and set a fill - doesn't work
-    // let gradient = `<defs>
-    //           <linearGradient id="grad-${id}" x1="0" y1="0" x2="100%" y2="100%" gradientTransform="rotate(0)">
-    //               <stop offset="5%" stop-color=${props.startColor}  stop-opacity="1"/>
-    //               <stop offset="95%" stop-color=${props.endColor}  stop-opacity="1"/>
-    //           </linearGradient>
-    //       </defs>
-    //       <g id="group-${id}" stroke="url(#grad-${id})">
-    //       ${svgEl.innerHTML}
-    //       </g>`;
-    // removeAllElements(svgEl);
-    // svgEl.insertAdjacentHTML('afterBegin', gradient);
-
     let gradient = `<defs>
               <linearGradient id="grad-${id}" x1="0" y1="0" x2="100%" y2="100%" gradientTransform="rotate(0)">
                   <stop offset="5%" stop-color=${props.startColor}  stop-opacity="1"/>

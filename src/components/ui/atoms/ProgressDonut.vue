@@ -11,7 +11,8 @@ import {
 
 const gradColorA = (props) => getStatusColor(props.status);
 const gradColorB = (props) => getStatusHueShiftColor(props.status);
-const sizePx = (props) => sizeStringToPixel(props.size);
+// props.expanded = true if there are children in the slot
+const sizePx = (props) => sizeStringToPixel(props.size) + (props.expanded ? props.stroke * 2 + 6 : 0);
 const halfsize = (props) => sizePx(props) * 0.5;
 const radius = (props) => halfsize(props) - props.stroke * 0.5;
 const circumference = (props) => 2 * Math.PI * radius(props);
@@ -24,6 +25,7 @@ const indicatorstyle = (props) => ({
   strokeLinecap  : 'round',
 });
 const rotateval = (props) => 'rotate(-90 ' + halfsize(props) + ',' + halfsize(props) + ')';
+const wrappedCompOffset = (props) => props.stroke + 3 + "px";
 const cls = (props) => ['progress-donut',`label-${props.labelPosition}`].join(' ');
 const chartCls = (props) => ['donut-chart',props.status].join(' ');
 
@@ -39,6 +41,10 @@ export default {
     stroke     : {
       type   : Number,
       default: 10,
+    },
+    rotate: {
+      type: Number,
+      default: 0
     },
     status     : {
       type     : String,
@@ -63,7 +69,7 @@ export default {
     },
   },
   render(h, context) {
-    let props = context.props,
+    let props = {expanded: context.children ? true : false, ...context.props},
       id = createId('donut'),
       labelEl = props.label.length ?
         <span class="label">{props.label}</span> : null,
@@ -74,16 +80,18 @@ export default {
         style={{ textAnchor: 'middle' }}>
         <tspan class="text-percent">{props.center}</tspan>
       </text>) : null,
-      centerCircleEl = props.center.length ?  <circle
-              r={radius(props) - 7}
+      centerComponent = context.children ? <div class="wrapped-component" style={{ top: wrappedCompOffset(props)}}>{context.children}</div> : null,
+      centerCircleEl = context.children || props.center.length ?  <circle
+              r={radius(props) - (props.stroke/2) - 2}
               cx={halfsize(props)}
               cy={halfsize(props)}
               class="center-circle"/> : null;
 
     return (
       <div class={cls(props)}>
-        <div  class={chartCls(props)}>
-          <svg width={sizePx(props)} height={sizePx(props)}>
+        <div class={chartCls(props)}>
+          {centerComponent}
+          <svg width={sizePx(props)} height={sizePx(props)} style={`transform: rotate(${props.rotate}deg);`}>
             <defs>
                 <linearGradient id={id} gradientTransform="rotate(0)">
                     <stop offset="5%" stop-color={gradColorA(props)} />
@@ -106,7 +114,7 @@ export default {
               style={indicatorstyle(props)}
               stroke={`url(#${id})`}
               class="indicator"/>
-            {centerEl}
+              {centerEl}
           </svg>
         </div>
         {labelEl}

@@ -6,7 +6,7 @@ export default {
     let contents = context.slots().default.map((child,index) => {
       return (<div class="cell" key={index}><span>{child}</span></div>)
     });
-    return (<div class="square-grid">{contents}</div>);
+    return (<section class="grid-square">{contents}</section>);
   },
 };
 </script>

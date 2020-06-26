@@ -1,7 +1,7 @@
 <style lang="scss" scoped></style>
 
 <template>
-  <div :class="cls()">
+  <Box :class="cls()" tag="section">
     <div
       class="header"
       @click="onHeaderClick"
@@ -16,24 +16,26 @@
       </div>
     </div>
     <AnimateExpand>
-      <section
+      <Box
         v-if="isOpen"
         class="accordion-row-content"
+        tag="section"
         :aria-hidden="!isOpen"
       >
         <slot></slot>
-      </section>
+      </Box>
     </AnimateExpand>
-  </div>
+  </Box>
 </template>
 
 <script>
-import AnimateExpand from '../atoms/micro/AnimateHeight';
-import ToggleChevron from '../atoms/micro/ToggleChevron';
+import AnimateExpand from "../atoms/micro/AnimateHeight";
+import ToggleChevron from "../atoms/micro/ToggleChevron";
+import Box from "../atoms/Box";
 
 export default {
-  name: 'AccordionRow',
-  components: { ToggleChevron, AnimateExpand },
+  name: "AccordionRow",
+  components: { Box, ToggleChevron, AnimateExpand },
   props: {
     open: {
       type: Boolean,
@@ -41,7 +43,7 @@ export default {
     },
     label: {
       type: String,
-      default: '',
+      default: "",
     },
     scroll: {
       type: Boolean,
@@ -62,15 +64,15 @@ export default {
   methods: {
     onHeaderClick() {
       this.isOpen = !this.isOpen;
-      let evt = this.isOpen ? 'opened' : 'closed';
+      let evt = this.isOpen ? "opened" : "closed";
       this.$emit(evt);
     },
     cls() {
       return [
-        'accordion-row',
-        this.scroll ? 'scroll' : '',
-        this.isOpen ? 'open' : 'closed',
-      ].join(' ');
+        "accordion-row",
+        this.scroll ? "scroll" : "",
+        this.isOpen ? "open" : "closed",
+      ].join(" ");
     },
   },
 };

@@ -76,6 +76,7 @@
         >
       </Box>
     </div>
+    <h6>Testing inline components</h6>
     <div class="flex items-center justify-between">
       <Badge status="neutral" glyph="far fa-calendar-alt">I'm a badge!</Badge>
       <DropDown
@@ -109,13 +110,13 @@
         status="primary"
         imgUrl="https://images.pexels.com/photos/61100/pexels-photo-61100.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=500&w=500"
       />
-      <ProgressDonutWrap :percent="50" :stroke="2" size="md" status="success">
+      <ProgressDonut :percent="50" :stroke="2" size="md" status="success">
         <Avatar
           size="md"
           status="primary"
           imgUrl="https://images.pexels.com/photos/61100/pexels-photo-61100.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=500&w=500"
         />
-      </ProgressDonutWrap>
+      </ProgressDonut>
       <Button glyph="fas fa-external-link-alt">
         Show Modal
       </Button>
@@ -194,7 +195,8 @@
       </p>
     </AccordionRow>
     <hr />
-    <div class="flex-group-row">
+    <GridSquare>
+      <h6>Progress Donut</h6>
       <ProgressDonut
         :percent="progressPct.value"
         label="Completed"
@@ -230,10 +232,38 @@
         label="Completed"
         size="xl"
         status="secondary"
-        :stroke="5"
+        :stroke="10"
         :center="`${progressPct.value}%`"
+        labelPosition="right"
       />
-    </div>
+
+      <ProgressDonut
+        v-for="(size, idx) in compSizes"
+        :percent="50"
+        :stroke="(idx + 1) * 2"
+        :size="size"
+        :key="idx"
+        :rotate="idx * 45"
+        status="success"
+      >
+        <Avatar
+          :size="size"
+          status="primary"
+          imgUrl="https://images.pexels.com/photos/61100/pexels-photo-61100.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=500&w=500"
+        />
+      </ProgressDonut>
+
+      <ProgressDonut
+        v-for="(size, idx) in compSizes"
+        :percent="50"
+        :stroke="10 - idx * 2"
+        :size="size"
+        :key="idx"
+        status="info"
+      >
+        <Icon :size="size" status="secondary" glyph="fa fa-cog" />
+      </ProgressDonut>
+    </GridSquare>
     <hr />
     <div class="flex-group-col">
       <ProgressBar
@@ -281,7 +311,7 @@
       />
     </div>
     <hr />
-    <div class="flex-group-row">
+    <GridAuto mode="fit">
       <Ribbon />
       <Ribbon status="danger" />
       <Ribbon status="success" />
@@ -291,7 +321,7 @@
       <Ribbon position="top" status="danger" />
       <Ribbon position="top" status="neutral" />
       <Ribbon position="top" status="secondary" />
-    </div>
+    </GridAuto>
     <hr />
     <div class="flex-group-row">
       <Icon size="xs" status="primary" glyph="fa fa-cog" />
@@ -322,7 +352,8 @@
     <!--            </Badge>-->
     <!--        </div>-->
     <hr />
-    <div class="flex-group-row">
+    <GridSquare>
+      <h6>Avatar</h6>
       <Avatar
         size="xs"
         status="primary"
@@ -348,43 +379,12 @@
         status="primary"
         imgUrl="https://images.pexels.com/photos/61100/pexels-photo-61100.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=500&w=500"
       />
-    </div>
-    <div class="flex-group-row">
       <Avatar size="xs" status="primary" initials="MP" />
       <Avatar size="sm" status="neutral" initials="MP" />
       <Avatar size="md" status="success" initials="MP" />
       <Avatar size="lg" status="warning" initials="MP" />
       <Avatar size="xl" status="secondary" initials="MP" />
-    </div>
-    <hr />
-    <div class="flex-group-row">
-      <ProgressDonutWrap
-        v-for="(size, idx) in compSizes"
-        :percent="50"
-        :stroke="(idx + 1) * 2"
-        :size="size"
-        :key="idx"
-        status="success"
-      >
-        <Avatar
-          :size="size"
-          status="primary"
-          imgUrl="https://images.pexels.com/photos/61100/pexels-photo-61100.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=500&w=500"
-        />
-      </ProgressDonutWrap>
-    </div>
-    <div class="flex-group-row">
-      <ProgressDonutWrap
-        v-for="(size, idx) in compSizes"
-        :percent="50"
-        :stroke="10 - idx * 2"
-        :size="size"
-        :key="idx"
-        status="info"
-      >
-        <Icon :size="size" status="secondary" glyph="fa fa-cog" />
-      </ProgressDonutWrap>
-    </div>
+    </GridSquare>
     <hr />
     <div class="flex-group-row">
       <Button
@@ -538,13 +538,14 @@ import Button from "../components/ui/atoms/Button";
 import Table from "../components/ui/molecules/Table";
 import Avatar from "../components/ui/atoms/Avatar";
 import TableObjData from "../components/ui/molecules/TableObjData";
+import GridAuto from "../components/ui/molecules/GridAuto";
+import GridSquare from "../components/ui/molecules/GridSquare";
 import Loading from "../components/ui/atoms/Loading";
 import ProgressDonut from "../components/ui/atoms/ProgressDonut";
 import Ribbon from "../components/ui/atoms/Ribbon";
 import AccordionRow from "../components/ui/molecules/AccordionRow";
 import ProgressBar from "../components/ui/atoms/ProgressBar";
 import DropDown from "../components/ui/molecules/DropDown";
-import ProgressDonutWrap from "../components/ui/molecules/ProgressDonutWrap";
 import MobileMenuIcon from "../components/ui/atoms/micro/MobileMenuIcon";
 import CheckBox from "../components/ui/atoms/CheckBox";
 import CalendarDate from "../components/ui/atoms/CalendarDate";
@@ -560,7 +561,6 @@ export default {
     CalendarDate,
     CheckBox,
     MobileMenuIcon,
-    ProgressDonutWrap,
     DropDown,
     ProgressBar,
     AccordionRow,
@@ -575,6 +575,8 @@ export default {
     Avatar,
     TableObjData,
     Box,
+    GridAuto,
+    GridSquare,
   },
   props: {
     p: {
