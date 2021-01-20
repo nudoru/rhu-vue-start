@@ -20,7 +20,7 @@
     "@vue/cli-plugin-vuex": "~4.3.0",
     "@vue/cli-service": "~4.3.0",
     "bootstrap-sass": "^3.4.1",
-    "gsap": "^3.3.0",
+    "gsap": "^3.6.0",
     "html-loader": "^1.1.0",
     "lodash": "^4.17.15",
     "moment": "^2.26.0",
