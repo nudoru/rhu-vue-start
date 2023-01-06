@@ -18,7 +18,7 @@
     "@vue/cli-plugin-babel": "~4.3.0",
     "@vue/cli-plugin-router": "~4.3.0",
     "@vue/cli-plugin-vuex": "~4.3.0",
-    "@vue/cli-service": "~4.3.0",
+    "@vue/cli-service": "~5.0.8",
     "bootstrap-sass": "^3.4.1",
     "gsap": "^3.3.0",
     "html-loader": "^1.1.0",
